@@ -13,7 +13,7 @@
     *{box-sizing:border-box} html{scroll-behavior:smooth}
     body{margin:0;font-family:"Manrope",sans-serif;color:var(--ink);background:radial-gradient(circle at top left,rgba(217,240,246,.95),transparent 24%),radial-gradient(circle at 90% 2%,rgba(244,237,225,.9),transparent 20%),linear-gradient(180deg,#fffdf8 0%,#f9f5ed 48%,#eef7fb 100%);min-height:100vh}
     body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,32,91,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,32,91,.04) 1px,transparent 1px);background-size:22px 22px;opacity:.28;mask-image:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.14))}
-    .shell{width:min(1460px,calc(100% - 32px));margin:0 auto;padding:28px 0 40px}
+    .shell{width:min(1520px,calc(100% - 32px));margin:0 auto;padding:28px 0 40px}
     .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(0,32,91,.96),rgba(0,65,130,.9));border-radius:32px;color:#fff;padding:34px;box-shadow:var(--shadow)}
     .hero::after{content:"";position:absolute;inset:auto -80px -90px auto;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(159,216,255,.6),rgba(159,216,255,.04) 68%)}
     .hero-top,.section-title,.hero-grid,.content,.admin-grid,.footer-callout{display:grid;gap:22px}
@@ -33,7 +33,7 @@
     .hero-list-item strong,.summary-row strong,.recent-item strong{display:block;font-size:.96rem;margin-bottom:2px}
     .hero-list-item span,.summary-row span,.recent-item span,.section-title p,.muted,.footnote{color:rgba(23,50,77,.72);line-height:1.65} .hero-list-item span{color:rgba(255,255,255,.75);font-size:.9rem}
     .token,.lesson-count,.badge{border-radius:999px;font-size:.76rem;font-weight:700;white-space:nowrap} .token{padding:8px 10px;background:rgba(255,255,255,.14)}
-    .content{grid-template-columns:minmax(0,1.45fr) minmax(360px,.82fr);margin-top:22px;align-items:start}
+    .content{grid-template-columns:minmax(0,1fr);margin-top:22px;align-items:start}
     .card{min-width:0;background:rgba(255,255,255,.86);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,32,91,.08);backdrop-filter:blur(12px)} .card-inner{padding:24px}
     .section-title{grid-template-columns:1fr auto;margin-bottom:20px}
     .tab-switch{display:inline-flex;background:#e8f1fa;border-radius:999px;padding:4px;gap:4px}
@@ -53,12 +53,12 @@
     .lessons-table{width:100%;min-width:860px;border-collapse:collapse;font-size:.94rem} .lessons-table th,.lessons-table td{text-align:left;padding:14px 12px;border-bottom:1px solid rgba(0,32,91,.08);vertical-align:top}
     .lessons-table th{color:rgba(23,50,77,.72);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}
     .badge{display:inline-flex;align-items:center;padding:7px 10px}.badge.completed{background:rgba(41,183,130,.14);color:#0f7a52}.badge.scheduled{background:rgba(0,72,154,.12);color:#00489a}.badge.cancelled{background:rgba(214,66,66,.12);color:#b03636}
-    .summary-card{height:100%;padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92))}.side-stack{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}.calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.09);border-radius:24px;background:rgba(255,255,255,.92)}.calendar-shell iframe{display:block;width:100%;height:420px;border:0}.calendar-feed{display:grid;gap:14px}.calendar-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,32,91,.08)}.calendar-row:last-child{border-bottom:none;padding-bottom:0}.calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none}.calendar-row a:hover{text-decoration:underline}.calendar-meta{display:block;color:rgba(23,50,77,.72);line-height:1.55;font-size:.92rem;margin-top:4px}.calendar-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;background:rgba(31,165,169,.12);color:#0b6e72;font-size:.76rem;font-weight:800;white-space:nowrap}
+    .summary-card{height:100%;padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92))}.side-stack{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}.calendar-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:18px;align-items:start}.calendar-sidebar{display:grid;gap:16px}.calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.09);border-radius:24px;background:rgba(255,255,255,.92)}.calendar-shell iframe{display:block;width:100%;height:620px;border:0}.calendar-feed{display:grid;gap:14px}.calendar-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,32,91,.08)}.calendar-row:last-child{border-bottom:none;padding-bottom:0}.calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none}.calendar-row a:hover{text-decoration:underline}.calendar-meta{display:block;color:rgba(23,50,77,.72);line-height:1.55;font-size:.92rem;margin-top:4px}.calendar-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;background:rgba(31,165,169,.12);color:#0b6e72;font-size:.76rem;font-weight:800;white-space:nowrap}
     .lesson-count{min-width:42px;text-align:center;padding:7px 10px;background:rgba(0,32,91,.08);color:var(--rice-blue);font-weight:800}
     .recent-feed{margin-top:18px}.recent-item{border:1px solid rgba(0,32,91,.08)} .footnote{font-size:.95rem}
     .note-block{padding:20px;background:linear-gradient(135deg,rgba(0,32,91,.95),rgba(7,87,138,.92));color:#fff}.note-block ul{margin:14px 0 0 18px;padding:0;line-height:1.7}
     .empty{text-align:center;border:1px dashed rgba(0,32,91,.16);background:rgba(236,245,252,.65)}
-    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout,.side-stack{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout,.side-stack,.calendar-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-shell iframe{height:480px}}
     @media (max-width:760px){.shell{width:min(100%,calc(100% - 18px));padding-top:10px}.hero,.card-inner{padding:18px}.hero-top,.section-title{grid-template-columns:1fr}.form-grid,.stats,.filters{grid-template-columns:1fr}h1{font-size:2.4rem}.lessons-table{display:block;overflow-x:auto}}
   </style>
 </head>
@@ -72,14 +72,14 @@
       <div class="hero-grid">
         <div>
           <h1>A cleaner way to keep up with swim lessons.</h1>
-          <p>I mocked this up around a separate private-lessons calendar that sits on my own account. The point was not to make a huge polished platform. I wanted something an instructor could use fast after a lesson, while giving Maggie one place to check what happened this week.</p>
+          <p>I rebuilt this around a separate private-lessons calendar that lives on my own Rice account just for this desk. The point was not to make a huge polished platform. I wanted something an instructor could use fast after a lesson, while giving Maggie one place to check what happened this week.</p>
           <div class="meta-row"><div class="meta-pill">Quick lesson entry</div><div class="meta-pill">Actual calendar pulled in</div><div class="meta-pill">Simple admin view</div></div>
         </div>
         <aside class="hero-panel">
           <h3>What I focused on</h3>
           <div class="hero-list">
             <div class="hero-list-item"><div><strong>Less typing after a lesson</strong><span>One form with the fields staff actually needs instead of scattered notes.</span></div><div class="token">01</div></div>
-            <div class="hero-list-item"><div><strong>Real schedule context</strong><span>The new Rice Swim Private Lessons calendar is embedded on the page so the demo is grounded in real activity.</span></div><div class="token">02</div></div>
+            <div class="hero-list-item"><div><strong>Real schedule context</strong><span>The new Rice Swim Lesson Desk private-lessons calendar is embedded on the page so the demo is grounded in real activity.</span></div><div class="token">02</div></div>
             <div class="hero-list-item"><div><strong>Easy handoff to admin</strong><span>Filters, export, and summaries make it easier to check who taught what.</span></div><div class="token">03</div></div>
           </div>
         </aside>
@@ -109,7 +109,7 @@
               </div>
               <div class="button-row"><button class="primary" type="submit">Log lesson</button><button class="secondary" type="button" id="seed-demo">Load sample records</button><button class="ghost" type="button" id="clear-data">Reset local data</button></div>
             </form>
-            <div class="mini-note">Form entries still stay in the browser in this prototype, but the calendar panel on the right is tied to the real Rice Swim Private Lessons calendar on my account so this demo is not running on fake schedule data.</div>
+            <div class="mini-note">Form entries still stay in the browser in this prototype, but the calendar section below is tied to a separate Rice Swim Lesson Desk private-lessons calendar on my account so this demo is not running on fake schedule data.</div>
             <div class="recent-feed" id="recent-feed"></div>
           </div>
           <div class="panel" id="admin-panel">
@@ -133,31 +133,35 @@
           </div>
         </div>
       </section>
-      <aside class="card">
+      <section class="card">
         <div class="card-inner">
-          <div class="section-title"><div><h2>Rice Swim Private Lessons calendar</h2><p>This is the new calendar I created on my account for private lessons, plus a quick list of upcoming lessons so the page feels tied to the real workflow.</p></div></div>
-          <div class="summary-card"><h3>Calendar snapshot</h3><div class="summary-list" id="calendar-status"></div></div>
-          <div class="summary-card" style="margin-top:16px;"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Private Lessons calendar" src="https://calendar.google.com/calendar/embed?src=c_0045b2d5c255f71488e7c8c8e6bb061b9f36af2c5e044c3eb06b5ce03d5edf43%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
-          <div class="summary-card" style="margin-top:16px;"><h3>Upcoming lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
+          <div class="section-title"><div><h2>Rice Swim Lesson Desk private-lessons calendar</h2><p>This is a separate calendar I created on my `as610@rice.edu` account just for this site, so the page is no longer tied to the old shared calendar setup.</p></div></div>
+          <div class="calendar-grid">
+            <div class="summary-card"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Lesson Desk private-lessons calendar" src="https://calendar.google.com/calendar/embed?src=c_f51d269063b85665a146225998deffb386c8c71c8dbf8b71061c656d7e1f03ec%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
+            <div class="calendar-sidebar">
+              <div class="summary-card"><h3>Calendar snapshot</h3><div class="summary-list" id="calendar-status"></div></div>
+              <div class="summary-card"><h3>Upcoming lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
+            </div>
+          </div>
           <div class="footer-callout"><div class="footnote"><h3 style="margin-bottom:12px;">Why this version reads better</h3>It feels more like a student-built ops prototype now: less sales language, less future-platform talk, and more direct connection to the schedule staff already uses.</div><div class="note-block"><strong>What I would build next</strong><ul><li>Push submitted lessons into a shared sheet or database.</li><li>Match calendar events to lesson records automatically.</li><li>Add a tiny login layer so instructors only see their own entries.</li></ul></div></div>
         </div>
-      </aside>
+      </section>
     </main>
   </div>
   <script>
     const storageKey="rice-swim-lesson-desk";
     const instructors=["Antony Saleh","Sophia Kim","Jordan Patel","Mia Alvarez","Noah Bennett"];
     const actualCalendarEvents=[
-      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-01T09:30:00-05:00",end:"2026-04-01T10:00:00-05:00",link:"https://www.google.com/calendar/event?eid=bWIxZmdpZXZzZ202cHF2NG03OWFjdHMxOWcgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Aidan | Private w/Ruben 2",start:"2026-04-02T17:00:00-05:00",end:"2026-04-02T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=b2UxYmFoZjJpcGI4aTc2b2txam11MGVkbGcgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Aidan | Private w/Owen 5",start:"2026-04-06T16:30:00-05:00",end:"2026-04-06T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=bTMwbmN0djdodmUyc2hiMDRnOGJkdTF2bGMgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-07T17:30:00-05:00",end:"2026-04-07T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=cG4waWNzOG9yOWZhMHVsbG40N3ZtZXR2dTQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-09T09:00:00-05:00",end:"2026-04-09T09:30:00-05:00",link:"https://www.google.com/calendar/event?eid=OGFrcWc3aG12NWUzbjVsOTNub2FvcmxkNTQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Aidan | Private w/Ruben 3",start:"2026-04-09T17:00:00-05:00",end:"2026-04-09T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=YjB1dmRoNjhsa205NWowMHU0ZHExZjdkcW8gY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Private Lesson - Eowyn",start:"2026-04-11T15:00:00-05:00",end:"2026-04-11T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=b3E2aGlmMTluYWRiM3FjMjcyNXFlaDRsNGMgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Private Lesson - Eowyn",start:"2026-04-12T15:00:00-05:00",end:"2026-04-12T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=djlzdDNzZWpiZ2kwNzBiNGhhMG42ZWNoYmsgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Aidan | Private w/Owen 6",start:"2026-04-13T16:30:00-05:00",end:"2026-04-13T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=dGJvNmNia3ZyZmE5Z3A5MHYwZWQ4dWFkcjQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
-      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-14T17:30:00-05:00",end:"2026-04-14T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=MHVqbmtudWkzNzZoZjJxcnIyNzI2ZTA4NDQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"}
+      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-01T09:30:00-05:00",end:"2026-04-01T10:00:00-05:00",link:"https://www.google.com/calendar/event?eid=Z2g3djdyZWFsdWFrYm42aGJzOWVxbjF2YW8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Aidan | Private w/Ruben 2",start:"2026-04-02T17:00:00-05:00",end:"2026-04-02T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=aGtvOXIycTNwZTlxbWlidmw3Y2FxYmEwMm8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Aidan | Private w/Owen 5",start:"2026-04-06T16:30:00-05:00",end:"2026-04-06T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=ZDU3OWhjb3E4Zm4zZ3Q4MmpucDE4MDY1anMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-07T17:30:00-05:00",end:"2026-04-07T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=MW4wa2FzNzFqcjhxc2drYWM2ODkydGZsbXMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-09T09:00:00-05:00",end:"2026-04-09T09:30:00-05:00",link:"https://www.google.com/calendar/event?eid=Z3VtanJidnZvOXJ0c2o4ZW1ic2g0MG5zZmMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Aidan | Private w/Ruben 3",start:"2026-04-09T17:00:00-05:00",end:"2026-04-09T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=aWlkNXVxZzhmdHBsajRmcm05NzBuanZkZzggY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Private Lesson - Eowyn",start:"2026-04-11T15:00:00-05:00",end:"2026-04-11T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=aW5tczJtaG5vMWU5MDhvanZhYWI2ODNjZTQgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Private Lesson - Eowyn",start:"2026-04-12T15:00:00-05:00",end:"2026-04-12T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=bTUxaDVoajdrM3A5MXRobWtpZ3Mxa2pjazAgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Aidan | Private w/Owen 6",start:"2026-04-13T16:30:00-05:00",end:"2026-04-13T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=dGhhbmpiYmI5bDBkdml0c2cycnYwZzg2OG8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
+      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-14T17:30:00-05:00",end:"2026-04-14T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=NWpnYXNnNzkyMnZxbHJ0OGVrb3B0ZGltMjggY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"}
     ];
     const seedLessons=[
       {id:crypto.randomUUID(),instructorName:"Antony Saleh",studentName:"Emma Brooks",lessonDate:"2026-03-29",lessonTime:"16:00",duration:"60 min",lessonType:"Private",studentLevel:"Beginner",status:"Completed",location:"Recreation Pool",focusArea:"Water comfort + kicks",notes:"Great progress with floating and kicking. Parent asked about weekly scheduling."},
@@ -195,7 +199,7 @@
     function renderSummary(container,summaryObj,emptyMessage){const entries=Object.entries(summaryObj).sort((a,b)=>b[1]-a[1]).slice(0,6);if(!entries.length){container.innerHTML=`<div class="empty">${emptyMessage}</div>`;return}container.innerHTML=entries.map(([name,count])=>`<div class="summary-row"><div><strong>${name}</strong><span>${count===1?"1 lesson":`${count} lessons`}</span></div><div class="lesson-count">${count}</div></div>`).join("")}
     function renderTimeline(){const upcoming=actualCalendarEvents.slice(0,5);if(!upcoming.length){timelineSummary.innerHTML=`<div class="empty">No calendar events pulled in yet.</div>`;return}timelineSummary.innerHTML=upcoming.map((event)=>`<div class="summary-row"><div><strong>${event.title}</strong><span>${formatEventRange(event.start,event.end)}</span></div><div class="lesson-count">Live</div></div>`).join("")}
     function renderRecentFeed(){const recentLessons=[...lessons].sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0,3);const upcomingCalendar=actualCalendarEvents.slice(0,2);recentFeed.innerHTML=[...recentLessons.map((lesson)=>`<article class="recent-item"><div><strong>${lesson.studentName} • ${lesson.lessonType}</strong><span>${lesson.instructorName} • ${formatDateTime(lesson)}</span></div><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></article>`),...upcomingCalendar.map((event)=>`<article class="recent-item"><div><strong>${event.title}</strong><span>Calendar pull • ${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)].join("")}
-    function renderCalendarFeed(){if(!actualCalendarEvents.length){calendarFeed.innerHTML=`<div class="empty">No upcoming calendar events found.</div>`;calendarStatus.innerHTML=`<div class="empty">Calendar snapshot unavailable.</div>`;return}calendarStatus.innerHTML=`<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Private Lessons calendar for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div><div class="summary-row"><div><strong>Connected source</strong><span>Owned Google Calendar embed plus event links back to the new calendar entries.</span></div><div class="lesson-count">On</div></div>`;calendarFeed.innerHTML=actualCalendarEvents.map((event)=>`<div class="calendar-row"><div><a href="${event.link}" target="_blank" rel="noreferrer">${event.title}</a><span class="calendar-meta">${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("")}
+    function renderCalendarFeed(){if(!actualCalendarEvents.length){calendarFeed.innerHTML=`<div class="empty">No upcoming calendar events found.</div>`;calendarStatus.innerHTML=`<div class="empty">Calendar snapshot unavailable.</div>`;return}calendarStatus.innerHTML=`<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the separate Rice Swim Lesson Desk private-lessons calendar for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div><div class="summary-row"><div><strong>Connected source</strong><span>Brand-new calendar on as610@rice.edu with its own public embed and event links.</span></div><div class="lesson-count">On</div></div>`;calendarFeed.innerHTML=actualCalendarEvents.map((event)=>`<div class="calendar-row"><div><a href="${event.link}" target="_blank" rel="noreferrer">${event.title}</a><span class="calendar-meta">${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("")}
     function renderAll(){const activeLessons=filteredLessons();renderStats(activeLessons);renderTable(activeLessons);renderSummary(instructorSummary,groupCount(activeLessons,"instructorName"),"No instructors in the current view.");renderSummary(studentSummary,groupCount(activeLessons,"studentName"),"No students in the current view.");renderTimeline();renderRecentFeed();renderCalendarFeed()}
     function setTodayDefaults(){const today=new Date();document.getElementById("lessonDate").value=today.toISOString().split("T")[0];document.getElementById("lessonTime").value="16:00"}
     function resetFilters(){filterInstructor.value="all";filterStudent.value="";filterType.value="all";filterStart.value="";filterEnd.value="";renderAll()}
