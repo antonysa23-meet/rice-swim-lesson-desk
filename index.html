@@ -107,9 +107,9 @@
                 <div class="field"><label for="focusArea">Focus area</label><input id="focusArea" name="focusArea" type="text" placeholder="Freestyle confidence, treading water, flip turns"></div>
                 <div class="full"><label for="notes">Instructor notes</label><textarea id="notes" name="notes" placeholder="Add progress notes, parent follow-up items, cancellations, or anything admin should see."></textarea></div>
               </div>
-              <div class="button-row"><button class="primary" type="submit">Log lesson</button><button class="secondary" type="button" id="seed-demo">Load sample records</button><button class="ghost" type="button" id="clear-data">Reset local data</button></div>
+              <div class="button-row"><button class="primary" type="submit">Log lesson</button></div>
             </form>
-            <div class="mini-note">Form entries still stay in the browser in this prototype, but the calendar section below is tied to a separate Rice Swim Lesson Desk private-lessons calendar on my account so this demo is not running on fake schedule data.</div>
+            <div class="mini-note">Form entries stay in the browser in this version, and the calendar section below is tied directly to the Rice Swim Private Lessons calendar on my `as610@rice.edu` account.</div>
             <div class="recent-feed" id="recent-feed"></div>
           </div>
           <div class="panel" id="admin-panel">
@@ -127,7 +127,7 @@
               <div class="side-stack">
                 <div class="summary-card"><h3>By instructor</h3><div class="summary-list" id="instructor-summary"></div></div>
                 <div class="summary-card"><h3>By student</h3><div class="summary-list" id="student-summary"></div></div>
-                <div class="summary-card"><h3>Upcoming from the real calendar</h3><div class="summary-list" id="timeline-summary"></div></div>
+                <div class="summary-card"><h3>Upcoming from Rice Swim Private Lessons</h3><div class="summary-list" id="timeline-summary"></div></div>
               </div>
             </div>
           </div>
@@ -135,7 +135,7 @@
       </section>
       <section class="card">
         <div class="card-inner">
-          <div class="section-title"><div><h2>Rice Swim Lesson Desk private-lessons calendar</h2><p>This is a separate calendar I created on my `as610@rice.edu` account just for this site, so the page is no longer tied to the old shared calendar setup.</p></div></div>
+          <div class="section-title"><div><h2>Rice Swim Lesson Desk private-lessons calendar</h2><p>This calendar lives on my `as610@rice.edu` account and is the source for the embed and the upcoming lesson links on this page.</p></div></div>
           <div class="calendar-grid">
             <div class="summary-card"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Lesson Desk private-lessons calendar" src="https://calendar.google.com/calendar/embed?src=c_f51d269063b85665a146225998deffb386c8c71c8dbf8b71061c656d7e1f03ec%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
             <div class="calendar-sidebar">
@@ -143,7 +143,6 @@
               <div class="summary-card"><h3>Upcoming lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
             </div>
           </div>
-          <div class="footer-callout"><div class="footnote"><h3 style="margin-bottom:12px;">Why this version reads better</h3>It feels more like a student-built ops prototype now: less sales language, less future-platform talk, and more direct connection to the schedule staff already uses.</div><div class="note-block"><strong>What I would build next</strong><ul><li>Push submitted lessons into a shared sheet or database.</li><li>Match calendar events to lesson records automatically.</li><li>Add a tiny login layer so instructors only see their own entries.</li></ul></div></div>
         </div>
       </section>
     </main>
@@ -163,12 +162,6 @@
       {title:"Aidan | Private w/Owen 6",start:"2026-04-13T16:30:00-05:00",end:"2026-04-13T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=dGhhbmpiYmI5bDBkdml0c2cycnYwZzg2OG8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
       {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-14T17:30:00-05:00",end:"2026-04-14T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=NWpnYXNnNzkyMnZxbHJ0OGVrb3B0ZGltMjggY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"}
     ];
-    const seedLessons=[
-      {id:crypto.randomUUID(),instructorName:"Antony Saleh",studentName:"Emma Brooks",lessonDate:"2026-03-29",lessonTime:"16:00",duration:"60 min",lessonType:"Private",studentLevel:"Beginner",status:"Completed",location:"Recreation Pool",focusArea:"Water comfort + kicks",notes:"Great progress with floating and kicking. Parent asked about weekly scheduling."},
-      {id:crypto.randomUUID(),instructorName:"Sophia Kim",studentName:"Leo Carter",lessonDate:"2026-03-30",lessonTime:"17:30",duration:"45 min",lessonType:"Semi-private",studentLevel:"Intermediate",status:"Completed",location:"Competition Pool",focusArea:"Backstroke rhythm",notes:"Worked on body position and breathing cadence."},
-      {id:crypto.randomUUID(),instructorName:"Jordan Patel",studentName:"Avery Nguyen",lessonDate:"2026-04-02",lessonTime:"18:00",duration:"30 min",lessonType:"Assessment",studentLevel:"Advanced",status:"Scheduled",location:"Competition Pool",focusArea:"Technique assessment",notes:"First session after inquiry from parent."},
-      {id:crypto.randomUUID(),instructorName:"Mia Alvarez",studentName:"Mason Hall",lessonDate:"2026-03-31",lessonTime:"15:30",duration:"60 min",lessonType:"Stroke clinic",studentLevel:"Competitive",status:"Completed",location:"Competition Pool",focusArea:"Flip turns + butterfly timing",notes:"Would benefit from another clinic next week."}
-    ];
     const lessonForm=document.getElementById("lesson-form");
     const instructorSelect=document.getElementById("instructorName");
     const filterInstructor=document.getElementById("filterInstructor");
@@ -185,7 +178,7 @@
     const calendarFeed=document.getElementById("calendar-feed");
     const calendarStatus=document.getElementById("calendar-status");
     const saveLessons=(data)=>localStorage.setItem(storageKey,JSON.stringify(data));
-    const loadLessons=()=>{const raw=localStorage.getItem(storageKey);if(!raw){saveLessons(seedLessons);return seedLessons}try{const parsed=JSON.parse(raw);return Array.isArray(parsed)?parsed:seedLessons}catch{saveLessons(seedLessons);return seedLessons}};
+    const loadLessons=()=>{const raw=localStorage.getItem(storageKey);if(!raw){saveLessons([]);return []}try{const parsed=JSON.parse(raw);return Array.isArray(parsed)?parsed:[]}catch{saveLessons([]);return []}};
     let lessons=loadLessons();
     function populateInstructorOptions(){instructorSelect.innerHTML=instructors.map((name)=>`<option value="${name}">${name}</option>`).join("");filterInstructor.innerHTML=[`<option value="all">All instructors</option>`,...instructors.map((name)=>`<option value="${name}">${name}</option>`)].join("")}
     function formatDate(dateStr){const date=new Date(`${dateStr}T12:00:00`);return new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",year:"numeric"}).format(date)}
@@ -198,14 +191,13 @@
     function groupCount(list,key){return list.reduce((acc,item)=>{acc[item[key]]=(acc[item[key]]||0)+1;return acc},{})}
     function renderSummary(container,summaryObj,emptyMessage){const entries=Object.entries(summaryObj).sort((a,b)=>b[1]-a[1]).slice(0,6);if(!entries.length){container.innerHTML=`<div class="empty">${emptyMessage}</div>`;return}container.innerHTML=entries.map(([name,count])=>`<div class="summary-row"><div><strong>${name}</strong><span>${count===1?"1 lesson":`${count} lessons`}</span></div><div class="lesson-count">${count}</div></div>`).join("")}
     function renderTimeline(){const upcoming=actualCalendarEvents.slice(0,5);if(!upcoming.length){timelineSummary.innerHTML=`<div class="empty">No calendar events pulled in yet.</div>`;return}timelineSummary.innerHTML=upcoming.map((event)=>`<div class="summary-row"><div><strong>${event.title}</strong><span>${formatEventRange(event.start,event.end)}</span></div><div class="lesson-count">Live</div></div>`).join("")}
-    function renderRecentFeed(){const recentLessons=[...lessons].sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0,3);const upcomingCalendar=actualCalendarEvents.slice(0,2);recentFeed.innerHTML=[...recentLessons.map((lesson)=>`<article class="recent-item"><div><strong>${lesson.studentName} • ${lesson.lessonType}</strong><span>${lesson.instructorName} • ${formatDateTime(lesson)}</span></div><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></article>`),...upcomingCalendar.map((event)=>`<article class="recent-item"><div><strong>${event.title}</strong><span>Calendar pull • ${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)].join("")}
-    function renderCalendarFeed(){if(!actualCalendarEvents.length){calendarFeed.innerHTML=`<div class="empty">No upcoming calendar events found.</div>`;calendarStatus.innerHTML=`<div class="empty">Calendar snapshot unavailable.</div>`;return}calendarStatus.innerHTML=`<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the separate Rice Swim Lesson Desk private-lessons calendar for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div><div class="summary-row"><div><strong>Connected source</strong><span>Brand-new calendar on as610@rice.edu with its own public embed and event links.</span></div><div class="lesson-count">On</div></div>`;calendarFeed.innerHTML=actualCalendarEvents.map((event)=>`<div class="calendar-row"><div><a href="${event.link}" target="_blank" rel="noreferrer">${event.title}</a><span class="calendar-meta">${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("")}
+    function renderRecentFeed(){const recentLessons=[...lessons].sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0,3);const upcomingCalendar=actualCalendarEvents.slice(0,2);const items=[...recentLessons.map((lesson)=>`<article class="recent-item"><div><strong>${lesson.studentName} • ${lesson.lessonType}</strong><span>${lesson.instructorName} • ${formatDateTime(lesson)}</span></div><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></article>`),...upcomingCalendar.map((event)=>`<article class="recent-item"><div><strong>${event.title}</strong><span>Calendar pull • ${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)];
+      recentFeed.innerHTML=items.length?items.join(""):`<div class="empty">No lesson activity yet.</div>`}
+    function renderCalendarFeed(){if(!actualCalendarEvents.length){calendarFeed.innerHTML=`<div class="empty">No upcoming calendar events found.</div>`;calendarStatus.innerHTML=`<div class="empty">Calendar snapshot unavailable.</div>`;return}calendarStatus.innerHTML=`<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Private Lessons calendar on as610@rice.edu for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div>`;calendarFeed.innerHTML=actualCalendarEvents.map((event)=>`<div class="calendar-row"><div><a href="${event.link}" target="_blank" rel="noreferrer">${event.title}</a><span class="calendar-meta">${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("")}
     function renderAll(){const activeLessons=filteredLessons();renderStats(activeLessons);renderTable(activeLessons);renderSummary(instructorSummary,groupCount(activeLessons,"instructorName"),"No instructors in the current view.");renderSummary(studentSummary,groupCount(activeLessons,"studentName"),"No students in the current view.");renderTimeline();renderRecentFeed();renderCalendarFeed()}
     function setTodayDefaults(){const today=new Date();document.getElementById("lessonDate").value=today.toISOString().split("T")[0];document.getElementById("lessonTime").value="16:00"}
     function resetFilters(){filterInstructor.value="all";filterStudent.value="";filterType.value="all";filterStart.value="";filterEnd.value="";renderAll()}
     lessonForm.addEventListener("submit",(event)=>{event.preventDefault();const formData=new FormData(lessonForm);const nextLesson=Object.fromEntries(formData.entries());nextLesson.id=crypto.randomUUID();lessons=[nextLesson,...lessons];saveLessons(lessons);lessonForm.reset();setTodayDefaults();renderAll();document.querySelector('[data-tab-target="admin-panel"]').click()});
-    document.getElementById("seed-demo").addEventListener("click",()=>{lessons=seedLessons.map((lesson)=>({...lesson,id:crypto.randomUUID()}));saveLessons(lessons);renderAll()});
-    document.getElementById("clear-data").addEventListener("click",()=>{lessons=[];saveLessons(lessons);renderAll()});
     document.getElementById("clear-filters").addEventListener("click",resetFilters);
     [filterInstructor,filterStudent,filterType,filterStart,filterEnd].forEach((element)=>{element.addEventListener("input",renderAll);element.addEventListener("change",renderAll)});
     document.getElementById("export-csv").addEventListener("click",()=>{const rows=filteredLessons();if(!rows.length)return;const headers=["Instructor","Student","Date","Time","Duration","Lesson Type","Student Level","Status","Location","Focus Area","Notes"];const csv=[headers.join(","),...rows.map((lesson)=>[lesson.instructorName,lesson.studentName,lesson.lessonDate,lesson.lessonTime,lesson.duration,lesson.lessonType,lesson.studentLevel,lesson.status,lesson.location,lesson.focusArea||"",(lesson.notes||"").replaceAll("\n"," ")].map((value)=>`"${String(value).replaceAll('"','""')}"`).join(","))].join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="rice-swim-lessons.csv";link.click();URL.revokeObjectURL(url)});
