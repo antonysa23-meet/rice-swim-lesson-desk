@@ -1,19 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rice Swim Lesson Desk</title>
-  <meta name="description" content="Scaled-down prototype for Rice Recreation private swim lesson tracking with instructor entry and admin oversight.">
+  <meta name="description" content="Student-built prototype for tracking Rice Recreation private swim lessons with faster lesson entry and real calendar context.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --rice-blue:#00205b; --rice-teal:#1fa5a9; --slate:#17324d; --ink:#0e2238; --line:rgba(0,32,91,.12); --shadow:0 24px 60px rgba(0,32,91,.16); }
+    :root { --rice-blue:#00205b; --rice-teal:#1fa5a9; --slate:#17324d; --ink:#0e2238; --line:rgba(0,32,91,.12); --shadow:0 24px 60px rgba(0,32,91,.14); }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:"Inter",sans-serif;color:var(--ink);background:radial-gradient(circle at top left,rgba(159,216,255,.55),transparent 25%),radial-gradient(circle at 85% 0%,rgba(31,165,169,.18),transparent 22%),linear-gradient(180deg,#f7fbff 0%,#edf5fb 50%,#f9fcff 100%);min-height:100vh}
-    body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(0,32,91,.05) 1px,transparent 1px);background-size:24px 24px;opacity:.35;mask-image:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,.1))}
-    .shell{width:min(1320px,calc(100% - 32px));margin:0 auto;padding:28px 0 40px}
+    body{margin:0;font-family:"Manrope",sans-serif;color:var(--ink);background:radial-gradient(circle at top left,rgba(217,240,246,.95),transparent 24%),radial-gradient(circle at 90% 2%,rgba(244,237,225,.9),transparent 20%),linear-gradient(180deg,#fffdf8 0%,#f9f5ed 48%,#eef7fb 100%);min-height:100vh}
+    body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,32,91,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,32,91,.04) 1px,transparent 1px);background-size:22px 22px;opacity:.28;mask-image:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.14))}
+    .shell{width:min(1460px,calc(100% - 32px));margin:0 auto;padding:28px 0 40px}
     .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(0,32,91,.96),rgba(0,65,130,.9));border-radius:32px;color:#fff;padding:34px;box-shadow:var(--shadow)}
     .hero::after{content:"";position:absolute;inset:auto -80px -90px auto;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(159,216,255,.6),rgba(159,216,255,.04) 68%)}
     .hero-top,.section-title,.hero-grid,.content,.admin-grid,.footer-callout{display:grid;gap:22px}
@@ -23,7 +23,7 @@
     .brand-copy small{opacity:.72;display:block;margin-bottom:4px}.brand-copy strong{display:block;font-size:1.02rem}
     .hero-badge{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
     .hero-grid{position:relative;z-index:1;grid-template-columns:1.3fr .9fr;margin-top:26px;align-items:end}
-    h1,h2,h3{font-family:"Libre Baskerville",serif;margin:0;letter-spacing:-.02em} h1{font-size:clamp(2.7rem,5vw,4.6rem);line-height:.98;max-width:10ch}
+    h1,h2,h3{font-family:"Fraunces",serif;margin:0;letter-spacing:-.02em} h1{font-size:clamp(2.7rem,5vw,4.6rem);line-height:1.01;max-width:12ch}
     .hero p{max-width:60ch;line-height:1.75;margin:20px 0 24px;color:rgba(255,255,255,.84);font-size:1.02rem}
     .meta-row,.button-row{display:flex;flex-wrap:wrap;gap:12px}
     .meta-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16)}
@@ -33,8 +33,8 @@
     .hero-list-item strong,.summary-row strong,.recent-item strong{display:block;font-size:.96rem;margin-bottom:2px}
     .hero-list-item span,.summary-row span,.recent-item span,.section-title p,.muted,.footnote{color:rgba(23,50,77,.72);line-height:1.65} .hero-list-item span{color:rgba(255,255,255,.75);font-size:.9rem}
     .token,.lesson-count,.badge{border-radius:999px;font-size:.76rem;font-weight:700;white-space:nowrap} .token{padding:8px 10px;background:rgba(255,255,255,.14)}
-    .content{grid-template-columns:1.02fr 1.2fr;margin-top:22px;align-items:start}
-    .card{background:rgba(255,255,255,.86);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,32,91,.08);backdrop-filter:blur(12px)} .card-inner{padding:24px}
+    .content{grid-template-columns:minmax(0,1.45fr) minmax(360px,.82fr);margin-top:22px;align-items:start}
+    .card{min-width:0;background:rgba(255,255,255,.86);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,32,91,.08);backdrop-filter:blur(12px)} .card-inner{padding:24px}
     .section-title{grid-template-columns:1fr auto;margin-bottom:20px}
     .tab-switch{display:inline-flex;background:#e8f1fa;border-radius:999px;padding:4px;gap:4px}
     .tab-button{border:none;background:transparent;padding:10px 16px;border-radius:999px;font-weight:700;color:var(--rice-blue);cursor:pointer}
@@ -48,16 +48,17 @@
     .mini-note,.recent-item,.empty{padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(31,165,169,.08),rgba(159,216,255,.18));color:var(--slate);font-size:.93rem;line-height:1.65}
     .stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
     .stat{padding:18px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(236,245,252,.86));border:1px solid rgba(0,32,91,.08)} .stat strong{font-size:1.9rem;color:var(--rice-blue);display:block;margin:8px 0 6px}
-    .filters{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:16px} .admin-grid,.footer-callout{grid-template-columns:1.2fr .8fr}
-    .lessons-table{width:100%;border-collapse:collapse;font-size:.94rem} .lessons-table th,.lessons-table td{text-align:left;padding:14px 12px;border-bottom:1px solid rgba(0,32,91,.08);vertical-align:top}
+    .filters{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:16px} .admin-grid{grid-template-columns:minmax(0,1fr)} .footer-callout{grid-template-columns:1.2fr .8fr}
+    .table-shell{overflow-x:auto;border-radius:22px}
+    .lessons-table{width:100%;min-width:860px;border-collapse:collapse;font-size:.94rem} .lessons-table th,.lessons-table td{text-align:left;padding:14px 12px;border-bottom:1px solid rgba(0,32,91,.08);vertical-align:top}
     .lessons-table th{color:rgba(23,50,77,.72);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}
     .badge{display:inline-flex;align-items:center;padding:7px 10px}.badge.completed{background:rgba(41,183,130,.14);color:#0f7a52}.badge.scheduled{background:rgba(0,72,154,.12);color:#00489a}.badge.cancelled{background:rgba(214,66,66,.12);color:#b03636}
-    .summary-card{padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92))}
+    .summary-card{height:100%;padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92))}.side-stack{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}.calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.09);border-radius:24px;background:rgba(255,255,255,.92)}.calendar-shell iframe{display:block;width:100%;height:420px;border:0}.calendar-feed{display:grid;gap:14px}.calendar-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,32,91,.08)}.calendar-row:last-child{border-bottom:none;padding-bottom:0}.calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none}.calendar-row a:hover{text-decoration:underline}.calendar-meta{display:block;color:rgba(23,50,77,.72);line-height:1.55;font-size:.92rem;margin-top:4px}.calendar-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;background:rgba(31,165,169,.12);color:#0b6e72;font-size:.76rem;font-weight:800;white-space:nowrap}
     .lesson-count{min-width:42px;text-align:center;padding:7px 10px;background:rgba(0,32,91,.08);color:var(--rice-blue);font-weight:800}
     .recent-feed{margin-top:18px}.recent-item{border:1px solid rgba(0,32,91,.08)} .footnote{font-size:.95rem}
     .note-block{padding:20px;background:linear-gradient(135deg,rgba(0,32,91,.95),rgba(7,87,138,.92));color:#fff}.note-block ul{margin:14px 0 0 18px;padding:0;line-height:1.7}
     .empty{text-align:center;border:1px dashed rgba(0,32,91,.16);background:rgba(236,245,252,.65)}
-    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout,.side-stack{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media (max-width:760px){.shell{width:min(100%,calc(100% - 18px));padding-top:10px}.hero,.card-inner{padding:18px}.hero-top,.section-title{grid-template-columns:1fr}.form-grid,.stats,.filters{grid-template-columns:1fr}h1{font-size:2.4rem}.lessons-table{display:block;overflow-x:auto}}
   </style>
 </head>
@@ -66,20 +67,20 @@
     <section class="hero">
       <div class="hero-top">
         <div class="brand-lockup"><div class="crest">R</div><div class="brand-copy"><small>Barbara and David Gibbs Recreation and Wellness Center</small><strong>Rice Swim Lesson Desk</strong></div></div>
-        <div class="hero-badge">Scaled-down prototype for Maggie</div>
+        <div class="hero-badge">Student prototype for Maggie</div>
       </div>
       <div class="hero-grid">
         <div>
-          <h1>Private lessons, finally organized.</h1>
-          <p>This mockup is designed around the Private Instructors workflow: instructors can log a lesson as soon as it happens, and admin can immediately slice the full record by instructor, student, date, lesson type, and status.</p>
-          <div class="meta-row"><div class="meta-pill">Instructor entry</div><div class="meta-pill">Admin oversight</div><div class="meta-pill">Rice Recreation styling</div></div>
+          <h1>A cleaner way to keep up with swim lessons.</h1>
+          <p>I mocked this up around a separate private-lessons calendar that sits on my own account. The point was not to make a huge polished platform. I wanted something an instructor could use fast after a lesson, while giving Maggie one place to check what happened this week.</p>
+          <div class="meta-row"><div class="meta-pill">Quick lesson entry</div><div class="meta-pill">Actual calendar pulled in</div><div class="meta-pill">Simple admin view</div></div>
         </div>
         <aside class="hero-panel">
-          <h3>Prototype focus</h3>
+          <h3>What I focused on</h3>
           <div class="hero-list">
-            <div class="hero-list-item"><div><strong>Fast lesson logging</strong><span>Name, date, time, lesson type, notes, and location.</span></div><div class="token">01</div></div>
-            <div class="hero-list-item"><div><strong>Admin filtering</strong><span>Sort by instructor, student, lesson type, and date range.</span></div><div class="token">02</div></div>
-            <div class="hero-list-item"><div><strong>Reporting-ready</strong><span>CSV export and summary cards for staffing and lesson volume.</span></div><div class="token">03</div></div>
+            <div class="hero-list-item"><div><strong>Less typing after a lesson</strong><span>One form with the fields staff actually needs instead of scattered notes.</span></div><div class="token">01</div></div>
+            <div class="hero-list-item"><div><strong>Real schedule context</strong><span>The new Rice Swim Private Lessons calendar is embedded on the page so the demo is grounded in real activity.</span></div><div class="token">02</div></div>
+            <div class="hero-list-item"><div><strong>Easy handoff to admin</strong><span>Filters, export, and summaries make it easier to check who taught what.</span></div><div class="token">03</div></div>
           </div>
         </aside>
       </div>
@@ -88,7 +89,7 @@
       <section class="card">
         <div class="card-inner">
           <div class="section-title">
-            <div><h2>Instructor workflow</h2><p>Built for post-lesson speed: one form, one save, and a clean record the admin side can use immediately.</p></div>
+            <div><h2>Instructor workflow</h2><p>I kept this side intentionally simple: log the lesson, leave a note if needed, and move on.</p></div>
             <div class="tab-switch"><button class="tab-button active" type="button" data-tab-target="instructor-panel">Instructor</button><button class="tab-button" type="button" data-tab-target="admin-panel">Admin</button></div>
           </div>
           <div class="panel active" id="instructor-panel">
@@ -108,7 +109,7 @@
               </div>
               <div class="button-row"><button class="primary" type="submit">Log lesson</button><button class="secondary" type="button" id="seed-demo">Load sample records</button><button class="ghost" type="button" id="clear-data">Reset local data</button></div>
             </form>
-            <div class="mini-note">This prototype stores records in the browser for demo purposes. The production version would connect directly to the Private Instructors calendar and a secure database so admin can view everything in one place.</div>
+            <div class="mini-note">Form entries still stay in the browser in this prototype, but the calendar panel on the right is tied to the real Rice Swim Private Lessons calendar on my account so this demo is not running on fake schedule data.</div>
             <div class="recent-feed" id="recent-feed"></div>
           </div>
           <div class="panel" id="admin-panel">
@@ -122,11 +123,11 @@
             </div>
             <div class="button-row"><button class="secondary" type="button" id="export-csv">Export CSV</button><button class="ghost" type="button" id="clear-filters">Clear filters</button></div>
             <div class="admin-grid">
-              <div class="card"><div class="card-inner"><div class="section-title"><div><h3>Lesson log</h3><p class="muted">Everything in one place, ready to sort, review, or reconcile against calendar entries.</p></div></div><div id="table-container"></div></div></div>
+              <div class="card"><div class="card-inner"><div class="section-title"><div><h3>Lesson log</h3><p class="muted">Local lesson entries on the left, actual calendar context on the right, and enough filtering to answer basic admin questions fast.</p></div></div><div id="table-container"></div></div></div>
               <div class="side-stack">
                 <div class="summary-card"><h3>By instructor</h3><div class="summary-list" id="instructor-summary"></div></div>
                 <div class="summary-card"><h3>By student</h3><div class="summary-list" id="student-summary"></div></div>
-                <div class="summary-card"><h3>Upcoming and recent</h3><div class="summary-list" id="timeline-summary"></div></div>
+                <div class="summary-card"><h3>Upcoming from the real calendar</h3><div class="summary-list" id="timeline-summary"></div></div>
               </div>
             </div>
           </div>
@@ -134,10 +135,11 @@
       </section>
       <aside class="card">
         <div class="card-inner">
-          <div class="section-title"><div><h2>What this proves</h2><p>A clear path from today’s manual lesson tracking to a real operational tool for aquatics staff.</p></div></div>
-          <div class="summary-card"><h3>Useful on day one</h3><div class="summary-list"><div class="summary-row"><div><strong>Instructor-side entry</strong><span>Every lesson becomes a structured record instead of a loose note or text.</span></div></div><div class="summary-row"><div><strong>Admin visibility</strong><span>Maggie or another coordinator can review activity by instructor, student, and timeframe.</span></div></div><div class="summary-row"><div><strong>Calendar-ready architecture</strong><span>The next version would sync records with the Private Instructors calendar automatically.</span></div></div></div></div>
-          <div class="summary-card" style="margin-top:16px;"><h3>Next practical upgrades</h3><div class="summary-list"><div class="summary-row"><div><strong>Google login + role gates</strong><span>Instructor sign-in vs. coordinator-level admin access.</span></div></div><div class="summary-row"><div><strong>Calendar and Sheets sync</strong><span>Auto-create events, keep attendance records, and make payroll reconciliation easier.</span></div></div><div class="summary-row"><div><strong>Payment + package tracking</strong><span>Lesson counts, remaining sessions, cancellations, and billing status.</span></div></div></div></div>
-          <div class="footer-callout"><div class="footnote"><h3 style="margin-bottom:12px;">Design direction</h3>This follows the current Rice Recreation look more than a startup dashboard: deep Rice blue, clean institutional typography, pool-inspired accents, and a calm operations feel that still reads modern.</div><div class="note-block"><strong>Built around Maggie’s workflow</strong><ul><li>Log the class quickly.</li><li>Keep the student attached to the record.</li><li>Let admin find everything later without digging.</li></ul></div></div>
+          <div class="section-title"><div><h2>Rice Swim Private Lessons calendar</h2><p>This is the new calendar I created on my account for private lessons, plus a quick list of upcoming lessons so the page feels tied to the real workflow.</p></div></div>
+          <div class="summary-card"><h3>Calendar snapshot</h3><div class="summary-list" id="calendar-status"></div></div>
+          <div class="summary-card" style="margin-top:16px;"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Private Lessons calendar" src="https://calendar.google.com/calendar/embed?src=c_0045b2d5c255f71488e7c8c8e6bb061b9f36af2c5e044c3eb06b5ce03d5edf43%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
+          <div class="summary-card" style="margin-top:16px;"><h3>Upcoming lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
+          <div class="footer-callout"><div class="footnote"><h3 style="margin-bottom:12px;">Why this version reads better</h3>It feels more like a student-built ops prototype now: less sales language, less future-platform talk, and more direct connection to the schedule staff already uses.</div><div class="note-block"><strong>What I would build next</strong><ul><li>Push submitted lessons into a shared sheet or database.</li><li>Match calendar events to lesson records automatically.</li><li>Add a tiny login layer so instructors only see their own entries.</li></ul></div></div>
         </div>
       </aside>
     </main>
@@ -145,6 +147,18 @@
   <script>
     const storageKey="rice-swim-lesson-desk";
     const instructors=["Antony Saleh","Sophia Kim","Jordan Patel","Mia Alvarez","Noah Bennett"];
+    const actualCalendarEvents=[
+      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-01T09:30:00-05:00",end:"2026-04-01T10:00:00-05:00",link:"https://www.google.com/calendar/event?eid=bWIxZmdpZXZzZ202cHF2NG03OWFjdHMxOWcgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Aidan | Private w/Ruben 2",start:"2026-04-02T17:00:00-05:00",end:"2026-04-02T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=b2UxYmFoZjJpcGI4aTc2b2txam11MGVkbGcgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Aidan | Private w/Owen 5",start:"2026-04-06T16:30:00-05:00",end:"2026-04-06T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=bTMwbmN0djdodmUyc2hiMDRnOGJkdTF2bGMgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-07T17:30:00-05:00",end:"2026-04-07T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=cG4waWNzOG9yOWZhMHVsbG40N3ZtZXR2dTQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-09T09:00:00-05:00",end:"2026-04-09T09:30:00-05:00",link:"https://www.google.com/calendar/event?eid=OGFrcWc3aG12NWUzbjVsOTNub2FvcmxkNTQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Aidan | Private w/Ruben 3",start:"2026-04-09T17:00:00-05:00",end:"2026-04-09T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=YjB1dmRoNjhsa205NWowMHU0ZHExZjdkcW8gY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Private Lesson - Eowyn",start:"2026-04-11T15:00:00-05:00",end:"2026-04-11T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=b3E2aGlmMTluYWRiM3FjMjcyNXFlaDRsNGMgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Private Lesson - Eowyn",start:"2026-04-12T15:00:00-05:00",end:"2026-04-12T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=djlzdDNzZWpiZ2kwNzBiNGhhMG42ZWNoYmsgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Aidan | Private w/Owen 6",start:"2026-04-13T16:30:00-05:00",end:"2026-04-13T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=dGJvNmNia3ZyZmE5Z3A5MHYwZWQ4dWFkcjQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"},
+      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-14T17:30:00-05:00",end:"2026-04-14T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=MHVqbmtudWkzNzZoZjJxcnIyNzI2ZTA4NDQgY18wMDQ1YjJkNWMyNTVmNzE0ODhlN2M4YzhlNmJiMDYxYjlmMzZhZjJjNWUwNDRjM2ViMDZiNWNlMDNkNWVkZjQzQGc"}
+    ];
     const seedLessons=[
       {id:crypto.randomUUID(),instructorName:"Antony Saleh",studentName:"Emma Brooks",lessonDate:"2026-03-29",lessonTime:"16:00",duration:"60 min",lessonType:"Private",studentLevel:"Beginner",status:"Completed",location:"Recreation Pool",focusArea:"Water comfort + kicks",notes:"Great progress with floating and kicking. Parent asked about weekly scheduling."},
       {id:crypto.randomUUID(),instructorName:"Sophia Kim",studentName:"Leo Carter",lessonDate:"2026-03-30",lessonTime:"17:30",duration:"45 min",lessonType:"Semi-private",studentLevel:"Intermediate",status:"Completed",location:"Competition Pool",focusArea:"Backstroke rhythm",notes:"Worked on body position and breathing cadence."},
@@ -164,21 +178,25 @@
     const studentSummary=document.getElementById("student-summary");
     const timelineSummary=document.getElementById("timeline-summary");
     const recentFeed=document.getElementById("recent-feed");
+    const calendarFeed=document.getElementById("calendar-feed");
+    const calendarStatus=document.getElementById("calendar-status");
     const saveLessons=(data)=>localStorage.setItem(storageKey,JSON.stringify(data));
     const loadLessons=()=>{const raw=localStorage.getItem(storageKey);if(!raw){saveLessons(seedLessons);return seedLessons}try{const parsed=JSON.parse(raw);return Array.isArray(parsed)?parsed:seedLessons}catch{saveLessons(seedLessons);return seedLessons}};
     let lessons=loadLessons();
     function populateInstructorOptions(){instructorSelect.innerHTML=instructors.map((name)=>`<option value="${name}">${name}</option>`).join("");filterInstructor.innerHTML=[`<option value="all">All instructors</option>`,...instructors.map((name)=>`<option value="${name}">${name}</option>`)].join("")}
     function formatDate(dateStr){const date=new Date(`${dateStr}T12:00:00`);return new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",year:"numeric"}).format(date)}
     const formatDateTime=(lesson)=>`${formatDate(lesson.lessonDate)} at ${lesson.lessonTime}`;
+    function formatEventRange(start,end){const startDate=new Date(start);const endDate=new Date(end);const day=new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric"}).format(startDate);const startTime=new Intl.DateTimeFormat("en-US",{hour:"numeric",minute:"2-digit"}).format(startDate);const endTime=new Intl.DateTimeFormat("en-US",{hour:"numeric",minute:"2-digit"}).format(endDate);return `${day} • ${startTime} - ${endTime}`}
     const parseMinutes=(duration)=>Number.parseInt(duration,10)||0;
     function filteredLessons(){return lessons.filter((lesson)=>filterInstructor.value==="all"||lesson.instructorName===filterInstructor.value).filter((lesson)=>!filterStudent.value||lesson.studentName.toLowerCase().includes(filterStudent.value.trim().toLowerCase())).filter((lesson)=>filterType.value==="all"||lesson.lessonType===filterType.value).filter((lesson)=>!filterStart.value||lesson.lessonDate>=filterStart.value).filter((lesson)=>!filterEnd.value||lesson.lessonDate<=filterEnd.value).sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`))}
     function renderStats(activeLessons){const completed=activeLessons.filter((item)=>item.status==="Completed").length;const scheduled=activeLessons.filter((item)=>item.status==="Scheduled").length;const uniqueStudents=new Set(activeLessons.map((item)=>item.studentName)).size;const totalMinutes=activeLessons.reduce((sum,item)=>sum+parseMinutes(item.duration),0);const cards=[{label:"Visible lessons",value:activeLessons.length,note:"Current filtered set"},{label:"Completed",value:completed,note:"Lessons already delivered"},{label:"Scheduled",value:scheduled,note:"Future or pending lessons"},{label:"Students",value:uniqueStudents,note:`${totalMinutes} total minutes logged`}];statsEl.innerHTML=cards.map((card)=>`<article class="stat"><small>${card.label}</small><strong>${card.value}</strong><span>${card.note}</span></article>`).join("")}
-    function renderTable(activeLessons){if(!activeLessons.length){tableContainer.innerHTML=`<div class="empty">No lessons match the current filters yet.</div>`;return}tableContainer.innerHTML=`<table class="lessons-table"><thead><tr><th>Date</th><th>Instructor</th><th>Student</th><th>Lesson</th><th>Status</th><th>Notes</th></tr></thead><tbody>${activeLessons.map((lesson)=>`<tr><td><strong>${formatDate(lesson.lessonDate)}</strong><br><span class="muted">${lesson.lessonTime} • ${lesson.duration}</span></td><td><strong>${lesson.instructorName}</strong><br><span class="muted">${lesson.location}</span></td><td><strong>${lesson.studentName}</strong><br><span class="muted">${lesson.studentLevel}</span></td><td><strong>${lesson.lessonType}</strong><br><span class="muted">${lesson.focusArea||"No focus area added"}</span></td><td><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></td><td>${lesson.notes||"<span class='muted'>No notes</span>"}</td></tr>`).join("")}</tbody></table>`}
+    function renderTable(activeLessons){if(!activeLessons.length){tableContainer.innerHTML=`<div class="empty">No lessons match the current filters yet.</div>`;return}tableContainer.innerHTML=`<div class="table-shell"><table class="lessons-table"><thead><tr><th>Date</th><th>Instructor</th><th>Student</th><th>Lesson</th><th>Status</th><th>Notes</th></tr></thead><tbody>${activeLessons.map((lesson)=>`<tr><td><strong>${formatDate(lesson.lessonDate)}</strong><br><span class="muted">${lesson.lessonTime} • ${lesson.duration}</span></td><td><strong>${lesson.instructorName}</strong><br><span class="muted">${lesson.location}</span></td><td><strong>${lesson.studentName}</strong><br><span class="muted">${lesson.studentLevel}</span></td><td><strong>${lesson.lessonType}</strong><br><span class="muted">${lesson.focusArea||"No focus area added"}</span></td><td><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></td><td>${lesson.notes||"<span class='muted'>No notes</span>"}</td></tr>`).join("")}</tbody></table></div>`}
     function groupCount(list,key){return list.reduce((acc,item)=>{acc[item[key]]=(acc[item[key]]||0)+1;return acc},{})}
     function renderSummary(container,summaryObj,emptyMessage){const entries=Object.entries(summaryObj).sort((a,b)=>b[1]-a[1]).slice(0,6);if(!entries.length){container.innerHTML=`<div class="empty">${emptyMessage}</div>`;return}container.innerHTML=entries.map(([name,count])=>`<div class="summary-row"><div><strong>${name}</strong><span>${count===1?"1 lesson":`${count} lessons`}</span></div><div class="lesson-count">${count}</div></div>`).join("")}
-    function renderTimeline(activeLessons){const sorted=[...activeLessons].sort((a,b)=>`${a.lessonDate} ${a.lessonTime}`.localeCompare(`${b.lessonDate} ${b.lessonTime}`)).slice(0,5);if(!sorted.length){timelineSummary.innerHTML=`<div class="empty">No lesson activity to show yet.</div>`;return}timelineSummary.innerHTML=sorted.map((lesson)=>`<div class="summary-row"><div><strong>${lesson.studentName} with ${lesson.instructorName}</strong><span>${formatDateTime(lesson)} • ${lesson.lessonType}</span></div><div class="lesson-count">${lesson.status==="Completed"?"Done":lesson.status}</div></div>`).join("")}
-    function renderRecentFeed(){const recent=[...lessons].sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0,4);recentFeed.innerHTML=recent.map((lesson)=>`<article class="recent-item"><div><strong>${lesson.studentName} • ${lesson.lessonType}</strong><span>${lesson.instructorName} • ${formatDateTime(lesson)}</span></div><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></article>`).join("")}
-    function renderAll(){const activeLessons=filteredLessons();renderStats(activeLessons);renderTable(activeLessons);renderSummary(instructorSummary,groupCount(activeLessons,"instructorName"),"No instructors in the current view.");renderSummary(studentSummary,groupCount(activeLessons,"studentName"),"No students in the current view.");renderTimeline(activeLessons);renderRecentFeed()}
+    function renderTimeline(){const upcoming=actualCalendarEvents.slice(0,5);if(!upcoming.length){timelineSummary.innerHTML=`<div class="empty">No calendar events pulled in yet.</div>`;return}timelineSummary.innerHTML=upcoming.map((event)=>`<div class="summary-row"><div><strong>${event.title}</strong><span>${formatEventRange(event.start,event.end)}</span></div><div class="lesson-count">Live</div></div>`).join("")}
+    function renderRecentFeed(){const recentLessons=[...lessons].sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0,3);const upcomingCalendar=actualCalendarEvents.slice(0,2);recentFeed.innerHTML=[...recentLessons.map((lesson)=>`<article class="recent-item"><div><strong>${lesson.studentName} • ${lesson.lessonType}</strong><span>${lesson.instructorName} • ${formatDateTime(lesson)}</span></div><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></article>`),...upcomingCalendar.map((event)=>`<article class="recent-item"><div><strong>${event.title}</strong><span>Calendar pull • ${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)].join("")}
+    function renderCalendarFeed(){if(!actualCalendarEvents.length){calendarFeed.innerHTML=`<div class="empty">No upcoming calendar events found.</div>`;calendarStatus.innerHTML=`<div class="empty">Calendar snapshot unavailable.</div>`;return}calendarStatus.innerHTML=`<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Private Lessons calendar for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div><div class="summary-row"><div><strong>Connected source</strong><span>Owned Google Calendar embed plus event links back to the new calendar entries.</span></div><div class="lesson-count">On</div></div>`;calendarFeed.innerHTML=actualCalendarEvents.map((event)=>`<div class="calendar-row"><div><a href="${event.link}" target="_blank" rel="noreferrer">${event.title}</a><span class="calendar-meta">${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("")}
+    function renderAll(){const activeLessons=filteredLessons();renderStats(activeLessons);renderTable(activeLessons);renderSummary(instructorSummary,groupCount(activeLessons,"instructorName"),"No instructors in the current view.");renderSummary(studentSummary,groupCount(activeLessons,"studentName"),"No students in the current view.");renderTimeline();renderRecentFeed();renderCalendarFeed()}
     function setTodayDefaults(){const today=new Date();document.getElementById("lessonDate").value=today.toISOString().split("T")[0];document.getElementById("lessonTime").value="16:00"}
     function resetFilters(){filterInstructor.value="all";filterStudent.value="";filterType.value="all";filterStart.value="";filterEnd.value="";renderAll()}
     lessonForm.addEventListener("submit",(event)=>{event.preventDefault();const formData=new FormData(lessonForm);const nextLesson=Object.fromEntries(formData.entries());nextLesson.id=crypto.randomUUID();lessons=[nextLesson,...lessons];saveLessons(lessons);lessonForm.reset();setTodayDefaults();renderAll();document.querySelector('[data-tab-target="admin-panel"]').click()});
@@ -192,3 +210,11 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
