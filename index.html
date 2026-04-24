@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -36,8 +36,8 @@
     .content{grid-template-columns:minmax(0,1fr);margin-top:22px;align-items:start}
     .card{min-width:0;background:rgba(255,255,255,.86);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,32,91,.08);backdrop-filter:blur(12px)} .card-inner{padding:24px}
     .section-title{grid-template-columns:1fr auto;margin-bottom:20px}
-    .tab-switch{display:inline-flex;background:#e8f1fa;border-radius:999px;padding:4px;gap:4px}
-    .tab-button{border:none;background:transparent;padding:10px 16px;border-radius:999px;font-weight:700;color:var(--rice-blue);cursor:pointer}
+    .tab-switch{display:inline-flex;background:#e8f1fa;border-radius:999px;padding:4px;gap:4px;flex-wrap:wrap}
+    .tab-button{border:none;background:transparent;padding:10px 16px;border-radius:999px;font-weight:700;color:var(--rice-blue);cursor:pointer;font-size:.88rem}
     .tab-button.active{background:var(--rice-blue);color:#fff;box-shadow:0 10px 24px rgba(0,32,91,.18)} .panel{display:none}.panel.active{display:block}
     .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.field,.full{display:grid;gap:8px}.full{grid-column:1 / -1}
     label{font-size:.88rem;font-weight:700;color:var(--slate)}
@@ -53,13 +53,56 @@
     .lessons-table{width:100%;min-width:860px;border-collapse:collapse;font-size:.94rem} .lessons-table th,.lessons-table td{text-align:left;padding:14px 12px;border-bottom:1px solid rgba(0,32,91,.08);vertical-align:top}
     .lessons-table th{color:rgba(23,50,77,.72);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}
     .badge{display:inline-flex;align-items:center;padding:7px 10px}.badge.completed{background:rgba(41,183,130,.14);color:#0f7a52}.badge.scheduled{background:rgba(0,72,154,.12);color:#00489a}.badge.cancelled{background:rgba(214,66,66,.12);color:#b03636}
-    .summary-card{height:100%;padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92))}.side-stack{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}.calendar-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:18px;align-items:start}.calendar-sidebar{display:grid;gap:16px}.calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.09);border-radius:24px;background:rgba(255,255,255,.92)}.calendar-shell iframe{display:block;width:100%;height:620px;border:0}.calendar-feed{display:grid;gap:14px}.calendar-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,32,91,.08)}.calendar-row:last-child{border-bottom:none;padding-bottom:0}.calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none}.calendar-row a:hover{text-decoration:underline}.calendar-meta{display:block;color:rgba(23,50,77,.72);line-height:1.55;font-size:.92rem;margin-top:4px}.calendar-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;background:rgba(31,165,169,.12);color:#0b6e72;font-size:.76rem;font-weight:800;white-space:nowrap}
-    .lesson-count{min-width:42px;text-align:center;padding:7px 10px;background:rgba(0,32,91,.08);color:var(--rice-blue);font-weight:800}
+    .badge.paid{background:rgba(41,183,130,.14);color:#0f7a52}.badge.unpaid{background:rgba(214,66,66,.12);color:#b03636}.badge.waived{background:rgba(0,72,154,.12);color:#00489a}
+    .summary-card{height:100%;padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92));border-radius:24px}.side-stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}.calendar-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:18px;align-items:start}.calendar-sidebar{display:grid;gap:16px}.calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.09);border-radius:24px;background:rgba(255,255,255,.92)}.calendar-shell iframe{display:block;width:100%;height:620px;border:0}.calendar-feed{display:grid;gap:14px}.calendar-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,32,91,.08)}.calendar-row:last-child{border-bottom:none;padding-bottom:0}.calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none}.calendar-row a:hover{text-decoration:underline}.calendar-meta{display:block;color:rgba(23,50,77,.72);line-height:1.55;font-size:.92rem;margin-top:4px}.calendar-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;background:rgba(31,165,169,.12);color:#0b6e72;font-size:.76rem;font-weight:800;white-space:nowrap}
+    .lesson-count{min-width:42px;text-align:center;padding:7px 10px;background:rgba(0,32,91,.08);color:var(--rice-blue);font-weight:800;border-radius:999px;font-size:.76rem}
     .recent-feed{margin-top:18px}.recent-item{border:1px solid rgba(0,32,91,.08)} .footnote{font-size:.95rem}
     .note-block{padding:20px;background:linear-gradient(135deg,rgba(0,32,91,.95),rgba(7,87,138,.92));color:#fff}.note-block ul{margin:14px 0 0 18px;padding:0;line-height:1.7}
-    .empty{text-align:center;border:1px dashed rgba(0,32,91,.16);background:rgba(236,245,252,.65)}
-    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout,.side-stack,.calendar-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-shell iframe{height:480px}}
-    @media (max-width:760px){.shell{width:min(100%,calc(100% - 18px));padding-top:10px}.hero,.card-inner{padding:18px}.hero-top,.section-title{grid-template-columns:1fr}.form-grid,.stats,.filters{grid-template-columns:1fr}h1{font-size:2.4rem}.lessons-table{display:block;overflow-x:auto}}
+    .empty{text-align:center;border:1px dashed rgba(0,32,91,.16);background:rgba(236,245,252,.65);padding:14px 16px;border-radius:16px}
+
+    /* Receipt section in form */
+    .receipt-separator{grid-column:1/-1;border-top:2px dashed rgba(0,32,91,.12);margin:8px 0;padding-top:8px}
+    .receipt-separator label{font-size:.82rem;color:var(--rice-teal);text-transform:uppercase;letter-spacing:.08em}
+    .receipt-inline{display:flex;gap:8px;align-items:center;font-size:.86rem;color:var(--slate)}
+
+    /* Student Portal */
+    .student-search-bar{display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:22px;align-items:end}
+    .student-profile-header{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:24px}
+    .student-avatar{width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,var(--rice-blue),var(--rice-teal));display:grid;place-items:center;color:#fff;font-size:1.6rem;font-weight:800}
+    .student-meta{display:grid;gap:4px}
+    .student-meta h3{font-size:1.4rem}
+    .student-meta span{color:rgba(23,50,77,.72);font-size:.92rem}
+    .student-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+    .progress-timeline{display:grid;gap:0;position:relative;padding-left:28px}
+    .progress-timeline::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--rice-teal),rgba(31,165,169,.2))}
+    .timeline-entry{position:relative;padding:14px 0 14px 0;border-bottom:1px solid rgba(0,32,91,.06)}
+    .timeline-entry:last-child{border-bottom:none}
+    .timeline-dot{position:absolute;left:-22px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--rice-teal);border:2px solid #fff;box-shadow:0 2px 8px rgba(31,165,169,.3)}
+    .timeline-entry strong{display:block;font-size:.94rem;margin-bottom:4px}
+    .timeline-entry .timeline-date{font-size:.82rem;color:rgba(23,50,77,.6);margin-bottom:6px}
+    .timeline-entry .timeline-notes{font-size:.9rem;color:var(--slate);line-height:1.6;background:rgba(31,165,169,.06);padding:10px 14px;border-radius:12px;margin-top:8px}
+    .timeline-entry .timeline-receipt{font-size:.82rem;margin-top:6px;color:rgba(23,50,77,.6)}
+
+    /* Instructor Management */
+    .instructor-roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:22px}
+    .instructor-card{padding:20px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92));border:1px solid rgba(0,32,91,.09);display:grid;gap:12px}
+    .instructor-card.inactive{opacity:.55}
+    .instructor-card-header{display:flex;justify-content:space-between;align-items:center}
+    .instructor-card-header h3{font-size:1.05rem}
+    .instructor-card-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .instructor-card-stat{text-align:center;padding:10px;border-radius:14px;background:rgba(0,32,91,.04)}
+    .instructor-card-stat strong{display:block;font-size:1.3rem;color:var(--rice-blue)}
+    .instructor-card-stat span{font-size:.76rem;color:rgba(23,50,77,.72)}
+    .instructor-card-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .instructor-card-actions button{font-size:.82rem;padding:8px 14px}
+    .status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+    .status-dot.active{background:#29b782}.status-dot.inactive{background:#d64242}
+    .add-instructor-form{display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:22px;align-items:end}
+    .danger{color:#fff;background:linear-gradient(135deg,#b03636,#d64242);border:none;border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;font-size:.82rem}
+    .success{color:#fff;background:linear-gradient(135deg,#0f7a52,#29b782);border:none;border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;font-size:.82rem}
+
+    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout,.side-stack,.calendar-grid{grid-template-columns:1fr}.stats,.student-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-shell iframe{height:480px}.instructor-roster{grid-template-columns:1fr}}
+    @media (max-width:760px){.shell{width:min(100%,calc(100% - 18px));padding-top:10px}.hero,.card-inner{padding:18px}.hero-top,.section-title{grid-template-columns:1fr}.form-grid,.stats,.filters,.student-stats{grid-template-columns:1fr}h1{font-size:2.4rem}.lessons-table{display:block;overflow-x:auto}.tab-switch{justify-content:center}}
   </style>
 </head>
 <body>
@@ -73,14 +116,15 @@
         <div>
           <h1>A cleaner way to keep up with swim lessons.</h1>
           <p>I rebuilt this around a separate private-lessons calendar that lives on my own Rice account just for this desk. The point was not to make a huge polished platform. I wanted something an instructor could use fast after a lesson, while giving Maggie one place to check what happened this week.</p>
-          <div class="meta-row"><div class="meta-pill">Quick lesson entry</div><div class="meta-pill">Actual calendar pulled in</div><div class="meta-pill">Simple admin view</div></div>
+          <div class="meta-row"><div class="meta-pill">Quick lesson entry</div><div class="meta-pill">Actual calendar pulled in</div><div class="meta-pill">Receipt tracking</div><div class="meta-pill">Student portal</div></div>
         </div>
         <aside class="hero-panel">
           <h3>What I focused on</h3>
           <div class="hero-list">
             <div class="hero-list-item"><div><strong>Less typing after a lesson</strong><span>One form with the fields staff actually needs instead of scattered notes.</span></div><div class="token">01</div></div>
-            <div class="hero-list-item"><div><strong>Real schedule context</strong><span>The new Rice Swim Lesson Desk private-lessons calendar is embedded on the page so the demo is grounded in real activity.</span></div><div class="token">02</div></div>
-            <div class="hero-list-item"><div><strong>Easy handoff to admin</strong><span>Filters, export, and summaries make it easier to check who taught what.</span></div><div class="token">03</div></div>
+            <div class="hero-list-item"><div><strong>Receipt integration</strong><span>Payment tracking built right into the lesson log so receipts stay aligned.</span></div><div class="token">02</div></div>
+            <div class="hero-list-item"><div><strong>Student portal</strong><span>Students can look up their own lesson history, notes, and progress over time.</span></div><div class="token">03</div></div>
+            <div class="hero-list-item"><div><strong>Instructor management</strong><span>Easy roster updates for turnover without losing lesson history.</span></div><div class="token">04</div></div>
           </div>
         </aside>
       </div>
@@ -89,9 +133,16 @@
       <section class="card">
         <div class="card-inner">
           <div class="section-title">
-            <div><h2>Instructor workflow</h2><p>I kept this side intentionally simple: log the lesson, leave a note if needed, and move on.</p></div>
-            <div class="tab-switch"><button class="tab-button active" type="button" data-tab-target="instructor-panel">Instructor</button><button class="tab-button" type="button" data-tab-target="admin-panel">Admin</button></div>
+            <div><h2>Lesson Desk</h2><p>Log lessons, check receipts, look up students, or manage the instructor roster.</p></div>
+            <div class="tab-switch">
+              <button class="tab-button active" type="button" data-tab-target="instructor-panel">Instructor</button>
+              <button class="tab-button" type="button" data-tab-target="admin-panel">Admin</button>
+              <button class="tab-button" type="button" data-tab-target="student-panel">Student Portal</button>
+              <button class="tab-button" type="button" data-tab-target="manage-panel">Manage Instructors</button>
+            </div>
           </div>
+
+          <!-- INSTRUCTOR TAB -->
           <div class="panel active" id="instructor-panel">
             <form id="lesson-form">
               <div class="form-grid">
@@ -106,12 +157,19 @@
                 <div class="field"><label for="location">Location</label><select id="location" name="location" required><option value="Competition Pool">Competition Pool</option><option value="Recreation Pool">Recreation Pool</option><option value="Shallow water area">Shallow water area</option></select></div>
                 <div class="field"><label for="focusArea">Focus area</label><input id="focusArea" name="focusArea" type="text" placeholder="Freestyle confidence, treading water, flip turns"></div>
                 <div class="full"><label for="notes">Instructor notes</label><textarea id="notes" name="notes" placeholder="Add progress notes, parent follow-up items, cancellations, or anything admin should see."></textarea></div>
+                <div class="receipt-separator"><label>Receipt / Payment</label></div>
+                <div class="field"><label for="receiptNumber">Receipt #</label><input id="receiptNumber" name="receiptNumber" type="text" placeholder="e.g. REC-2026-0042"></div>
+                <div class="field"><label for="amount">Amount ($)</label><input id="amount" name="amount" type="number" step="0.01" min="0" placeholder="0.00"></div>
+                <div class="field"><label for="paymentMethod">Payment method</label><select id="paymentMethod" name="paymentMethod"><option value="">N/A</option><option value="Card on file">Card on file</option><option value="Cash">Cash</option><option value="Check">Check</option><option value="Rice Bursar">Rice Bursar</option><option value="Comp/Waived">Comp/Waived</option></select></div>
+                <div class="field"><label for="paymentStatus">Payment status</label><select id="paymentStatus" name="paymentStatus"><option value="Paid">Paid</option><option value="Unpaid">Unpaid</option><option value="Waived">Waived</option></select></div>
               </div>
               <div class="button-row"><button class="primary" type="submit">Log lesson</button></div>
             </form>
-            <div class="mini-note">Form entries stay in the browser in this version, and the calendar section below is tied directly to the Rice Swim Private Lessons calendar on my `as610@rice.edu` account.</div>
+            <div class="mini-note">Form entries stay in the browser in this version, and the calendar section below is tied directly to the Rice Swim Private Lessons calendar on my <code>as610@rice.edu</code> account.</div>
             <div class="recent-feed" id="recent-feed"></div>
           </div>
+
+          <!-- ADMIN TAB -->
           <div class="panel" id="admin-panel">
             <div class="stats" id="stats"></div>
             <div class="filters">
@@ -123,7 +181,7 @@
             </div>
             <div class="button-row"><button class="secondary" type="button" id="export-csv">Export CSV</button><button class="ghost" type="button" id="clear-filters">Clear filters</button></div>
             <div class="admin-grid">
-              <div class="card"><div class="card-inner"><div class="section-title"><div><h3>Lesson log</h3><p class="muted">Local lesson entries on the left, actual calendar context on the right, and enough filtering to answer basic admin questions fast.</p></div></div><div id="table-container"></div></div></div>
+              <div class="card"><div class="card-inner"><div class="section-title"><div><h3>Lesson log</h3><p class="muted">Lessons with receipt status. Filter and export as needed.</p></div></div><div id="table-container"></div></div></div>
               <div class="side-stack">
                 <div class="summary-card"><h3>By instructor</h3><div class="summary-list" id="instructor-summary"></div></div>
                 <div class="summary-card"><h3>By student</h3><div class="summary-list" id="student-summary"></div></div>
@@ -131,11 +189,38 @@
               </div>
             </div>
           </div>
+
+          <!-- STUDENT PORTAL TAB -->
+          <div class="panel" id="student-panel">
+            <div class="student-search-bar">
+              <div class="field"><label for="studentLookup">Look up a student</label><select id="studentLookup"><option value="">Select a student...</option></select></div>
+              <button class="secondary" type="button" id="student-lookup-btn">View history</button>
+            </div>
+            <div id="student-portal-content">
+              <div class="empty">Select a student above to view their lesson history, instructor notes, and progress.</div>
+            </div>
+          </div>
+
+          <!-- INSTRUCTOR MANAGEMENT TAB -->
+          <div class="panel" id="manage-panel">
+            <div class="add-instructor-form">
+              <div class="field"><label for="newInstructorName">Add new instructor</label><input id="newInstructorName" type="text" placeholder="Full name"></div>
+              <button class="primary" type="button" id="add-instructor-btn">Add</button>
+            </div>
+            <div class="instructor-roster" id="instructor-roster"></div>
+            <div class="summary-card" style="margin-top:14px">
+              <h3>Instructor assignment history</h3>
+              <p class="muted">Shows which instructors have taught each student, helping manage handoffs during turnover.</p>
+              <div id="assignment-history"></div>
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- CALENDAR SECTION -->
       <section class="card">
         <div class="card-inner">
-          <div class="section-title"><div><h2>Rice Swim Lesson Desk private-lessons calendar</h2><p>This calendar lives on my `as610@rice.edu` account and is the source for the embed and the upcoming lesson links on this page.</p></div></div>
+          <div class="section-title"><div><h2>Rice Swim Lesson Desk private-lessons calendar</h2><p>This calendar lives on my <code>as610@rice.edu</code> account and is the source for the embed and the upcoming lesson links on this page.</p></div></div>
           <div class="calendar-grid">
             <div class="summary-card"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Lesson Desk private-lessons calendar" src="https://calendar.google.com/calendar/embed?src=c_f51d269063b85665a146225998deffb386c8c71c8dbf8b71061c656d7e1f03ec%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
             <div class="calendar-sidebar">
@@ -147,10 +232,13 @@
       </section>
     </main>
   </div>
+
   <script>
-    const storageKey="rice-swim-lesson-desk-private-lessons";
-    const instructors=["Antony Saleh","Sophia Kim","Jordan Patel","Mia Alvarez","Noah Bennett"];
-    const actualCalendarEvents=[
+    const storageKey = "rice-swim-lesson-desk-private-lessons";
+    const rosterKey = "rice-swim-lesson-desk-instructors";
+    const defaultInstructors = ["Antony Saleh","Sophia Kim","Jordan Patel","Mia Alvarez","Noah Bennett"];
+
+    const actualCalendarEvents = [
       {title:"Chris Private Lesson w/Chinhui",start:"2026-04-01T09:30:00-05:00",end:"2026-04-01T10:00:00-05:00",link:"https://www.google.com/calendar/event?eid=Z2g3djdyZWFsdWFrYm42aGJzOWVxbjF2YW8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
       {title:"Aidan | Private w/Ruben 2",start:"2026-04-02T17:00:00-05:00",end:"2026-04-02T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=aGtvOXIycTNwZTlxbWlidmw3Y2FxYmEwMm8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
       {title:"Aidan | Private w/Owen 5",start:"2026-04-06T16:30:00-05:00",end:"2026-04-06T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=ZDU3OWhjb3E4Zm4zZ3Q4MmpucDE4MDY1anMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
@@ -162,55 +250,308 @@
       {title:"Aidan | Private w/Owen 6",start:"2026-04-13T16:30:00-05:00",end:"2026-04-13T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=dGhhbmpiYmI5bDBkdml0c2cycnYwZzg2OG8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
       {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-14T17:30:00-05:00",end:"2026-04-14T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=NWpnYXNnNzkyMnZxbHJ0OGVrb3B0ZGltMjggY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"}
     ];
-    const lessonForm=document.getElementById("lesson-form");
-    const instructorSelect=document.getElementById("instructorName");
-    const filterInstructor=document.getElementById("filterInstructor");
-    const filterStudent=document.getElementById("filterStudent");
-    const filterType=document.getElementById("filterType");
-    const filterStart=document.getElementById("filterStart");
-    const filterEnd=document.getElementById("filterEnd");
-    const statsEl=document.getElementById("stats");
-    const tableContainer=document.getElementById("table-container");
-    const instructorSummary=document.getElementById("instructor-summary");
-    const studentSummary=document.getElementById("student-summary");
-    const timelineSummary=document.getElementById("timeline-summary");
-    const recentFeed=document.getElementById("recent-feed");
-    const calendarFeed=document.getElementById("calendar-feed");
-    const calendarStatus=document.getElementById("calendar-status");
-    const saveLessons=(data)=>localStorage.setItem(storageKey,JSON.stringify(data));
-    const loadLessons=()=>{const raw=localStorage.getItem(storageKey);if(!raw){saveLessons([]);return []}try{const parsed=JSON.parse(raw);return Array.isArray(parsed)?parsed:[]}catch{saveLessons([]);return []}};
-    let lessons=loadLessons();
-    function populateInstructorOptions(){instructorSelect.innerHTML=instructors.map((name)=>`<option value="${name}">${name}</option>`).join("");filterInstructor.innerHTML=[`<option value="all">All instructors</option>`,...instructors.map((name)=>`<option value="${name}">${name}</option>`)].join("")}
-    function formatDate(dateStr){const date=new Date(`${dateStr}T12:00:00`);return new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",year:"numeric"}).format(date)}
-    const formatDateTime=(lesson)=>`${formatDate(lesson.lessonDate)} at ${lesson.lessonTime}`;
-    function formatEventRange(start,end){const startDate=new Date(start);const endDate=new Date(end);const day=new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric"}).format(startDate);const startTime=new Intl.DateTimeFormat("en-US",{hour:"numeric",minute:"2-digit"}).format(startDate);const endTime=new Intl.DateTimeFormat("en-US",{hour:"numeric",minute:"2-digit"}).format(endDate);return `${day} • ${startTime} - ${endTime}`}
-    const parseMinutes=(duration)=>Number.parseInt(duration,10)||0;
-    function filteredLessons(){return lessons.filter((lesson)=>filterInstructor.value==="all"||lesson.instructorName===filterInstructor.value).filter((lesson)=>!filterStudent.value||lesson.studentName.toLowerCase().includes(filterStudent.value.trim().toLowerCase())).filter((lesson)=>filterType.value==="all"||lesson.lessonType===filterType.value).filter((lesson)=>!filterStart.value||lesson.lessonDate>=filterStart.value).filter((lesson)=>!filterEnd.value||lesson.lessonDate<=filterEnd.value).sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`))}
-    function renderStats(activeLessons){const completed=activeLessons.filter((item)=>item.status==="Completed").length;const scheduled=activeLessons.filter((item)=>item.status==="Scheduled").length;const uniqueStudents=new Set(activeLessons.map((item)=>item.studentName)).size;const totalMinutes=activeLessons.reduce((sum,item)=>sum+parseMinutes(item.duration),0);const cards=[{label:"Visible lessons",value:activeLessons.length,note:"Current filtered set"},{label:"Completed",value:completed,note:"Lessons already delivered"},{label:"Scheduled",value:scheduled,note:"Future or pending lessons"},{label:"Students",value:uniqueStudents,note:`${totalMinutes} total minutes logged`}];statsEl.innerHTML=cards.map((card)=>`<article class="stat"><small>${card.label}</small><strong>${card.value}</strong><span>${card.note}</span></article>`).join("")}
-    function renderTable(activeLessons){if(!activeLessons.length){tableContainer.innerHTML=`<div class="empty">No lessons match the current filters yet.</div>`;return}tableContainer.innerHTML=`<div class="table-shell"><table class="lessons-table"><thead><tr><th>Date</th><th>Instructor</th><th>Student</th><th>Lesson</th><th>Status</th><th>Notes</th></tr></thead><tbody>${activeLessons.map((lesson)=>`<tr><td><strong>${formatDate(lesson.lessonDate)}</strong><br><span class="muted">${lesson.lessonTime} • ${lesson.duration}</span></td><td><strong>${lesson.instructorName}</strong><br><span class="muted">${lesson.location}</span></td><td><strong>${lesson.studentName}</strong><br><span class="muted">${lesson.studentLevel}</span></td><td><strong>${lesson.lessonType}</strong><br><span class="muted">${lesson.focusArea||"No focus area added"}</span></td><td><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></td><td>${lesson.notes||"<span class='muted'>No notes</span>"}</td></tr>`).join("")}</tbody></table></div>`}
-    function groupCount(list,key){return list.reduce((acc,item)=>{acc[item[key]]=(acc[item[key]]||0)+1;return acc},{})}
-    function renderSummary(container,summaryObj,emptyMessage){const entries=Object.entries(summaryObj).sort((a,b)=>b[1]-a[1]).slice(0,6);if(!entries.length){container.innerHTML=`<div class="empty">${emptyMessage}</div>`;return}container.innerHTML=entries.map(([name,count])=>`<div class="summary-row"><div><strong>${name}</strong><span>${count===1?"1 lesson":`${count} lessons`}</span></div><div class="lesson-count">${count}</div></div>`).join("")}
-    function renderTimeline(){const upcoming=actualCalendarEvents.slice(0,5);if(!upcoming.length){timelineSummary.innerHTML=`<div class="empty">No calendar events pulled in yet.</div>`;return}timelineSummary.innerHTML=upcoming.map((event)=>`<div class="summary-row"><div><strong>${event.title}</strong><span>${formatEventRange(event.start,event.end)}</span></div><div class="lesson-count">Live</div></div>`).join("")}
-    function renderRecentFeed(){const recentLessons=[...lessons].sort((a,b)=>`${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0,3);const upcomingCalendar=actualCalendarEvents.slice(0,2);const items=[...recentLessons.map((lesson)=>`<article class="recent-item"><div><strong>${lesson.studentName} • ${lesson.lessonType}</strong><span>${lesson.instructorName} • ${formatDateTime(lesson)}</span></div><span class="badge ${lesson.status.toLowerCase()}">${lesson.status}</span></article>`),...upcomingCalendar.map((event)=>`<article class="recent-item"><div><strong>${event.title}</strong><span>Calendar pull • ${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)];
-      recentFeed.innerHTML=items.length?items.join(""):`<div class="empty">No lesson activity yet.</div>`}
-    function renderCalendarFeed(){if(!actualCalendarEvents.length){calendarFeed.innerHTML=`<div class="empty">No upcoming calendar events found.</div>`;calendarStatus.innerHTML=`<div class="empty">Calendar snapshot unavailable.</div>`;return}calendarStatus.innerHTML=`<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Private Lessons calendar on as610@rice.edu for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div>`;calendarFeed.innerHTML=actualCalendarEvents.map((event)=>`<div class="calendar-row"><div><a href="${event.link}" target="_blank" rel="noreferrer">${event.title}</a><span class="calendar-meta">${formatEventRange(event.start,event.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("")}
-    function renderAll(){const activeLessons=filteredLessons();renderStats(activeLessons);renderTable(activeLessons);renderSummary(instructorSummary,groupCount(activeLessons,"instructorName"),"No instructors in the current view.");renderSummary(studentSummary,groupCount(activeLessons,"studentName"),"No students in the current view.");renderTimeline();renderRecentFeed();renderCalendarFeed()}
-    function setTodayDefaults(){const today=new Date();document.getElementById("lessonDate").value=today.toISOString().split("T")[0];document.getElementById("lessonTime").value="16:00"}
-    function resetFilters(){filterInstructor.value="all";filterStudent.value="";filterType.value="all";filterStart.value="";filterEnd.value="";renderAll()}
-    lessonForm.addEventListener("submit",(event)=>{event.preventDefault();const formData=new FormData(lessonForm);const nextLesson=Object.fromEntries(formData.entries());nextLesson.id=crypto.randomUUID();lessons=[nextLesson,...lessons];saveLessons(lessons);lessonForm.reset();setTodayDefaults();renderAll();document.querySelector('[data-tab-target="admin-panel"]').click()});
-    document.getElementById("clear-filters").addEventListener("click",resetFilters);
-    [filterInstructor,filterStudent,filterType,filterStart,filterEnd].forEach((element)=>{element.addEventListener("input",renderAll);element.addEventListener("change",renderAll)});
-    document.getElementById("export-csv").addEventListener("click",()=>{const rows=filteredLessons();if(!rows.length)return;const headers=["Instructor","Student","Date","Time","Duration","Lesson Type","Student Level","Status","Location","Focus Area","Notes"];const csv=[headers.join(","),...rows.map((lesson)=>[lesson.instructorName,lesson.studentName,lesson.lessonDate,lesson.lessonTime,lesson.duration,lesson.lessonType,lesson.studentLevel,lesson.status,lesson.location,lesson.focusArea||"",(lesson.notes||"").replaceAll("\n"," ")].map((value)=>`"${String(value).replaceAll('"','""')}"`).join(","))].join("\n");const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});const url=URL.createObjectURL(blob);const link=document.createElement("a");link.href=url;link.download="rice-swim-lessons.csv";link.click();URL.revokeObjectURL(url)});
-    document.querySelectorAll(".tab-button").forEach((button)=>{button.addEventListener("click",()=>{document.querySelectorAll(".tab-button").forEach((item)=>item.classList.remove("active"));document.querySelectorAll(".panel").forEach((panel)=>panel.classList.remove("active"));button.classList.add("active");document.getElementById(button.dataset.tabTarget).classList.add("active")})});
-    populateInstructorOptions();setTodayDefaults();renderAll();
+
+    /* ---- Data ---- */
+    const saveLessons = (data) => localStorage.setItem(storageKey, JSON.stringify(data));
+    const loadLessons = () => { const raw = localStorage.getItem(storageKey); if (!raw) { saveLessons([]); return []; } try { const p = JSON.parse(raw); return Array.isArray(p) ? p : []; } catch { saveLessons([]); return []; } };
+    const saveRoster = (data) => localStorage.setItem(rosterKey, JSON.stringify(data));
+    const loadRoster = () => {
+      const raw = localStorage.getItem(rosterKey);
+      if (!raw) { const roster = defaultInstructors.map(name => ({ name, active: true, addedDate: "2026-04-01" })); saveRoster(roster); return roster; }
+      try { const p = JSON.parse(raw); return Array.isArray(p) ? p : []; } catch { return []; }
+    };
+
+    let lessons = loadLessons();
+    let roster = loadRoster();
+
+    /* ---- DOM refs ---- */
+    const lessonForm = document.getElementById("lesson-form");
+    const instructorSelect = document.getElementById("instructorName");
+    const filterInstructor = document.getElementById("filterInstructor");
+    const filterStudent = document.getElementById("filterStudent");
+    const filterType = document.getElementById("filterType");
+    const filterStart = document.getElementById("filterStart");
+    const filterEnd = document.getElementById("filterEnd");
+    const statsEl = document.getElementById("stats");
+    const tableContainer = document.getElementById("table-container");
+    const instructorSummary = document.getElementById("instructor-summary");
+    const studentSummary = document.getElementById("student-summary");
+    const timelineSummary = document.getElementById("timeline-summary");
+    const recentFeed = document.getElementById("recent-feed");
+    const calendarFeed = document.getElementById("calendar-feed");
+    const calendarStatus = document.getElementById("calendar-status");
+    const studentLookup = document.getElementById("studentLookup");
+    const studentPortalContent = document.getElementById("student-portal-content");
+    const instructorRosterEl = document.getElementById("instructor-roster");
+    const assignmentHistory = document.getElementById("assignment-history");
+
+    /* ---- Helpers ---- */
+    function getActiveInstructors() { return roster.filter(i => i.active).map(i => i.name); }
+
+    function populateInstructorOptions() {
+      const active = getActiveInstructors();
+      instructorSelect.innerHTML = active.map(name => `<option value="${name}">${name}</option>`).join("");
+      filterInstructor.innerHTML = [`<option value="all">All instructors</option>`, ...roster.map(i => `<option value="${i.name}">${i.name}${i.active ? "" : " (inactive)"}</option>`)].join("");
+    }
+
+    function populateStudentLookup() {
+      const students = [...new Set(lessons.map(l => l.studentName))].sort();
+      studentLookup.innerHTML = [`<option value="">Select a student...</option>`, ...students.map(s => `<option value="${s}">${s}</option>`)].join("");
+    }
+
+    function formatDate(dateStr) { const d = new Date(`${dateStr}T12:00:00`); return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(d); }
+    const formatDateTime = (l) => `${formatDate(l.lessonDate)} at ${l.lessonTime}`;
+    function formatEventRange(start, end) { const s = new Date(start); const e = new Date(end); const day = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(s); const st = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(s); const et = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(e); return `${day} - ${st} to ${et}`; }
+    const parseMinutes = (d) => Number.parseInt(d, 10) || 0;
+
+    function filteredLessons() {
+      return lessons.filter(l => filterInstructor.value === "all" || l.instructorName === filterInstructor.value)
+        .filter(l => !filterStudent.value || l.studentName.toLowerCase().includes(filterStudent.value.trim().toLowerCase()))
+        .filter(l => filterType.value === "all" || l.lessonType === filterType.value)
+        .filter(l => !filterStart.value || l.lessonDate >= filterStart.value)
+        .filter(l => !filterEnd.value || l.lessonDate <= filterEnd.value)
+        .sort((a, b) => `${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`));
+    }
+
+    /* ---- Render: Stats ---- */
+    function renderStats(active) {
+      const completed = active.filter(i => i.status === "Completed").length;
+      const scheduled = active.filter(i => i.status === "Scheduled").length;
+      const uniqueStudents = new Set(active.map(i => i.studentName)).size;
+      const totalRevenue = active.reduce((s, i) => s + (parseFloat(i.amount) || 0), 0);
+      const cards = [
+        { label: "Visible lessons", value: active.length, note: "Current filtered set" },
+        { label: "Completed", value: completed, note: "Lessons already delivered" },
+        { label: "Scheduled", value: scheduled, note: "Future or pending lessons" },
+        { label: "Revenue", value: `$${totalRevenue.toFixed(0)}`, note: `${uniqueStudents} unique students` }
+      ];
+      statsEl.innerHTML = cards.map(c => `<article class="stat"><small>${c.label}</small><strong>${c.value}</strong><span>${c.note}</span></article>`).join("");
+    }
+
+    /* ---- Render: Table (with receipts) ---- */
+    function renderTable(active) {
+      if (!active.length) { tableContainer.innerHTML = `<div class="empty">No lessons match the current filters yet.</div>`; return; }
+      tableContainer.innerHTML = `<div class="table-shell"><table class="lessons-table"><thead><tr><th>Date</th><th>Instructor</th><th>Student</th><th>Lesson</th><th>Status</th><th>Receipt</th><th>Notes</th></tr></thead><tbody>${active.map(l => `<tr>
+        <td><strong>${formatDate(l.lessonDate)}</strong><br><span class="muted">${l.lessonTime} - ${l.duration}</span></td>
+        <td><strong>${l.instructorName}</strong><br><span class="muted">${l.location}</span></td>
+        <td><strong>${l.studentName}</strong><br><span class="muted">${l.studentLevel}</span></td>
+        <td><strong>${l.lessonType}</strong><br><span class="muted">${l.focusArea || "No focus area"}</span></td>
+        <td><span class="badge ${l.status.toLowerCase()}">${l.status}</span></td>
+        <td>${l.receiptNumber ? `<strong>${l.receiptNumber}</strong><br>` : ""}<span class="muted">${l.amount ? "$" + parseFloat(l.amount).toFixed(2) : "N/A"}</span>${l.paymentStatus ? `<br><span class="badge ${l.paymentStatus.toLowerCase()}">${l.paymentStatus}</span>` : ""}</td>
+        <td>${l.notes || "<span class='muted'>No notes</span>"}</td>
+      </tr>`).join("")}</tbody></table></div>`;
+    }
+
+    /* ---- Render: Summaries ---- */
+    function groupCount(list, key) { return list.reduce((a, i) => { a[i[key]] = (a[i[key]] || 0) + 1; return a; }, {}); }
+    function renderSummary(container, obj, emptyMsg) {
+      const entries = Object.entries(obj).sort((a, b) => b[1] - a[1]).slice(0, 6);
+      if (!entries.length) { container.innerHTML = `<div class="empty">${emptyMsg}</div>`; return; }
+      container.innerHTML = entries.map(([n, c]) => `<div class="summary-row"><div><strong>${n}</strong><span>${c === 1 ? "1 lesson" : `${c} lessons`}</span></div><div class="lesson-count">${c}</div></div>`).join("");
+    }
+    function renderTimeline() {
+      const upcoming = actualCalendarEvents.slice(0, 5);
+      if (!upcoming.length) { timelineSummary.innerHTML = `<div class="empty">No calendar events pulled in yet.</div>`; return; }
+      timelineSummary.innerHTML = upcoming.map(e => `<div class="summary-row"><div><strong>${e.title}</strong><span>${formatEventRange(e.start, e.end)}</span></div><div class="lesson-count">Live</div></div>`).join("");
+    }
+    function renderRecentFeed() {
+      const recent = [...lessons].sort((a, b) => `${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0, 3);
+      const cal = actualCalendarEvents.slice(0, 2);
+      const items = [...recent.map(l => `<article class="recent-item"><div><strong>${l.studentName} - ${l.lessonType}</strong><span>${l.instructorName} - ${formatDateTime(l)}${l.receiptNumber ? ` - ${l.receiptNumber}` : ""}</span></div><span class="badge ${l.status.toLowerCase()}">${l.status}</span></article>`),
+        ...cal.map(e => `<article class="recent-item"><div><strong>${e.title}</strong><span>Calendar pull - ${formatEventRange(e.start, e.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)];
+      recentFeed.innerHTML = items.length ? items.join("") : `<div class="empty">No lesson activity yet.</div>`;
+    }
+    function renderCalendarFeed() {
+      if (!actualCalendarEvents.length) { calendarFeed.innerHTML = `<div class="empty">No upcoming calendar events found.</div>`; calendarStatus.innerHTML = `<div class="empty">Calendar snapshot unavailable.</div>`; return; }
+      calendarStatus.innerHTML = `<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Private Lessons calendar on as610@rice.edu for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div>`;
+      calendarFeed.innerHTML = actualCalendarEvents.map(e => `<div class="calendar-row"><div><a href="${e.link}" target="_blank" rel="noreferrer">${e.title}</a><span class="calendar-meta">${formatEventRange(e.start, e.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("");
+    }
+
+    /* ---- Student Portal ---- */
+    function renderStudentPortal(studentName) {
+      const studentLessons = lessons.filter(l => l.studentName === studentName).sort((a, b) => `${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`));
+      if (!studentLessons.length) { studentPortalContent.innerHTML = `<div class="empty">No lessons found for "${studentName}".</div>`; return; }
+
+      const completed = studentLessons.filter(l => l.status === "Completed").length;
+      const totalMins = studentLessons.reduce((s, l) => s + parseMinutes(l.duration), 0);
+      const totalPaid = studentLessons.reduce((s, l) => s + (parseFloat(l.amount) || 0), 0);
+      const instructorsUsed = [...new Set(studentLessons.map(l => l.instructorName))];
+      const levels = studentLessons.map(l => l.studentLevel);
+      const currentLevel = levels[0] || "Unknown";
+      const initials = studentName.split(" ").map(w => w[0]).join("").toUpperCase();
+
+      let html = `
+        <div class="student-profile-header">
+          <div class="student-avatar">${initials}</div>
+          <div class="student-meta">
+            <h3>${studentName}</h3>
+            <span>Current level: ${currentLevel} | Instructors: ${instructorsUsed.join(", ")}</span>
+          </div>
+        </div>
+        <div class="student-stats">
+          <article class="stat"><small>Total lessons</small><strong>${studentLessons.length}</strong><span>${completed} completed</span></article>
+          <article class="stat"><small>Total time</small><strong>${totalMins} min</strong><span>${(totalMins / 60).toFixed(1)} hours in pool</span></article>
+          <article class="stat"><small>Total paid</small><strong>$${totalPaid.toFixed(0)}</strong><span>${studentLessons.filter(l => l.paymentStatus === "Unpaid").length} unpaid</span></article>
+          <article class="stat"><small>Current level</small><strong>${currentLevel}</strong><span>${instructorsUsed.length} instructor${instructorsUsed.length !== 1 ? "s" : ""}</span></article>
+        </div>
+        <div class="summary-card">
+          <h3>Lesson history and instructor notes</h3>
+          <div class="progress-timeline">
+            ${studentLessons.map(l => `
+              <div class="timeline-entry">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">${formatDate(l.lessonDate)} at ${l.lessonTime} - ${l.duration} - <span class="badge ${l.status.toLowerCase()}">${l.status}</span></div>
+                <strong>${l.lessonType} with ${l.instructorName}</strong>
+                <span class="muted">${l.focusArea || "No focus area"} | ${l.location} | Level: ${l.studentLevel}</span>
+                ${l.notes ? `<div class="timeline-notes">${l.notes}</div>` : ""}
+                ${l.receiptNumber ? `<div class="timeline-receipt">Receipt: ${l.receiptNumber} | $${parseFloat(l.amount || 0).toFixed(2)} | ${l.paymentStatus || "N/A"}</div>` : ""}
+              </div>
+            `).join("")}
+          </div>
+        </div>`;
+      studentPortalContent.innerHTML = html;
+    }
+
+    /* ---- Instructor Management ---- */
+    function renderInstructorRoster() {
+      instructorRosterEl.innerHTML = roster.map((inst, idx) => {
+        const instLessons = lessons.filter(l => l.instructorName === inst.name);
+        const completed = instLessons.filter(l => l.status === "Completed").length;
+        const students = new Set(instLessons.map(l => l.studentName)).size;
+        const totalMins = instLessons.reduce((s, l) => s + parseMinutes(l.duration), 0);
+        return `<div class="instructor-card ${inst.active ? "" : "inactive"}">
+          <div class="instructor-card-header">
+            <h3><span class="status-dot ${inst.active ? "active" : "inactive"}"></span>${inst.name}</h3>
+            <span class="muted" style="font-size:.78rem">${inst.active ? "Active" : "Inactive"}</span>
+          </div>
+          <div class="instructor-card-stats">
+            <div class="instructor-card-stat"><strong>${completed}</strong><span>Lessons taught</span></div>
+            <div class="instructor-card-stat"><strong>${students}</strong><span>Students</span></div>
+            <div class="instructor-card-stat"><strong>${totalMins}</strong><span>Minutes logged</span></div>
+            <div class="instructor-card-stat"><strong>${(totalMins / 60).toFixed(1)}</strong><span>Hours</span></div>
+          </div>
+          <div class="instructor-card-actions">
+            ${inst.active
+              ? `<button class="ghost" onclick="toggleInstructor(${idx})">Deactivate</button>`
+              : `<button class="success" onclick="toggleInstructor(${idx})">Reactivate</button>`}
+            ${instLessons.length === 0 ? `<button class="danger" onclick="removeInstructor(${idx})">Remove</button>` : ""}
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    function renderAssignmentHistory() {
+      const studentMap = {};
+      lessons.forEach(l => {
+        if (!studentMap[l.studentName]) studentMap[l.studentName] = new Set();
+        studentMap[l.studentName].add(l.instructorName);
+      });
+      const entries = Object.entries(studentMap).sort((a, b) => b[1].size - a[1].size);
+      if (!entries.length) { assignmentHistory.innerHTML = `<div class="empty">No assignment data yet.</div>`; return; }
+      assignmentHistory.innerHTML = `<div class="summary-list">${entries.map(([student, instructors]) =>
+        `<div class="summary-row"><div><strong>${student}</strong><span>${[...instructors].join(", ")}</span></div><div class="lesson-count">${instructors.size}</div></div>`
+      ).join("")}</div>`;
+    }
+
+    window.toggleInstructor = function(idx) {
+      roster[idx].active = !roster[idx].active;
+      saveRoster(roster);
+      populateInstructorOptions();
+      renderInstructorRoster();
+    };
+
+    window.removeInstructor = function(idx) {
+      roster.splice(idx, 1);
+      saveRoster(roster);
+      populateInstructorOptions();
+      renderInstructorRoster();
+    };
+
+    /* ---- Render all ---- */
+    function renderAll() {
+      const active = filteredLessons();
+      renderStats(active);
+      renderTable(active);
+      renderSummary(instructorSummary, groupCount(active, "instructorName"), "No instructors in the current view.");
+      renderSummary(studentSummary, groupCount(active, "studentName"), "No students in the current view.");
+      renderTimeline();
+      renderRecentFeed();
+      renderCalendarFeed();
+      populateStudentLookup();
+      renderInstructorRoster();
+      renderAssignmentHistory();
+    }
+
+    function setTodayDefaults() {
+      const today = new Date();
+      document.getElementById("lessonDate").value = today.toISOString().split("T")[0];
+      document.getElementById("lessonTime").value = "16:00";
+    }
+
+    function resetFilters() { filterInstructor.value = "all"; filterStudent.value = ""; filterType.value = "all"; filterStart.value = ""; filterEnd.value = ""; renderAll(); }
+
+    /* ---- Events ---- */
+    lessonForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fd = new FormData(lessonForm);
+      const lesson = Object.fromEntries(fd.entries());
+      lesson.id = crypto.randomUUID();
+      lessons = [lesson, ...lessons];
+      saveLessons(lessons);
+      lessonForm.reset();
+      setTodayDefaults();
+      renderAll();
+      document.querySelector('[data-tab-target="admin-panel"]').click();
+    });
+
+    document.getElementById("clear-filters").addEventListener("click", resetFilters);
+    [filterInstructor, filterStudent, filterType, filterStart, filterEnd].forEach(el => { el.addEventListener("input", renderAll); el.addEventListener("change", renderAll); });
+
+    document.getElementById("export-csv").addEventListener("click", () => {
+      const rows = filteredLessons();
+      if (!rows.length) return;
+      const headers = ["Instructor","Student","Date","Time","Duration","Lesson Type","Student Level","Status","Location","Focus Area","Notes","Receipt #","Amount","Payment Method","Payment Status"];
+      const csv = [headers.join(","), ...rows.map(l => [l.instructorName, l.studentName, l.lessonDate, l.lessonTime, l.duration, l.lessonType, l.studentLevel, l.status, l.location, l.focusArea || "", (l.notes || "").replaceAll("\n", " "), l.receiptNumber || "", l.amount || "", l.paymentMethod || "", l.paymentStatus || ""].map(v => `"${String(v).replaceAll('"', '""')}"`).join(","))].join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a"); a.href = url; a.download = "rice-swim-lessons.csv"; a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.querySelectorAll(".tab-button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-button").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tabTarget).classList.add("active");
+      });
+    });
+
+    document.getElementById("student-lookup-btn").addEventListener("click", () => {
+      const name = studentLookup.value;
+      if (name) renderStudentPortal(name);
+    });
+    studentLookup.addEventListener("change", () => {
+      const name = studentLookup.value;
+      if (name) renderStudentPortal(name);
+    });
+
+    document.getElementById("add-instructor-btn").addEventListener("click", () => {
+      const input = document.getElementById("newInstructorName");
+      const name = input.value.trim();
+      if (!name) return;
+      if (roster.some(i => i.name.toLowerCase() === name.toLowerCase())) { input.value = ""; return; }
+      roster.push({ name, active: true, addedDate: new Date().toISOString().split("T")[0] });
+      saveRoster(roster);
+      input.value = "";
+      populateInstructorOptions();
+      renderInstructorRoster();
+    });
+
+    /* ---- Init ---- */
+    populateInstructorOptions();
+    setTodayDefaults();
+    renderAll();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
