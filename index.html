@@ -4,136 +4,151 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rice Swim Lesson Desk</title>
-  <meta name="description" content="Student-built prototype for tracking Rice Recreation private swim lessons with faster lesson entry and real calendar context.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root { --rice-blue:#00205b; --rice-teal:#1fa5a9; --slate:#17324d; --ink:#0e2238; --line:rgba(0,32,91,.12); --shadow:0 24px 60px rgba(0,32,91,.14); }
+    :root { --rice-blue:#00205b; --rice-teal:#1fa5a9; --slate:#17324d; --ink:#0e2238; --line:rgba(0,32,91,.1); --shadow:0 4px 24px rgba(0,32,91,.06); }
     *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:"Manrope",sans-serif;color:var(--ink);background:radial-gradient(circle at top left,rgba(217,240,246,.95),transparent 24%),radial-gradient(circle at 90% 2%,rgba(244,237,225,.9),transparent 20%),linear-gradient(180deg,#fffdf8 0%,#f9f5ed 48%,#eef7fb 100%);min-height:100vh}
-    body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,32,91,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,32,91,.04) 1px,transparent 1px);background-size:22px 22px;opacity:.28;mask-image:linear-gradient(180deg,rgba(0,0,0,.75),rgba(0,0,0,.14))}
-    .shell{width:min(1520px,calc(100% - 32px));margin:0 auto;padding:28px 0 40px}
-    .hero{position:relative;overflow:hidden;background:linear-gradient(135deg,rgba(0,32,91,.96),rgba(0,65,130,.9));border-radius:32px;color:#fff;padding:34px;box-shadow:var(--shadow)}
-    .hero::after{content:"";position:absolute;inset:auto -80px -90px auto;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(159,216,255,.6),rgba(159,216,255,.04) 68%)}
-    .hero-top,.section-title,.hero-grid,.content,.admin-grid,.footer-callout{display:grid;gap:22px}
-    .hero-top{grid-template-columns:1fr auto;align-items:start;position:relative;z-index:1}.brand-lockup{display:flex;gap:14px;align-items:center}
-    .crest{width:54px;height:54px;border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.05));display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);font-weight:800;letter-spacing:.08em}
-    .brand-copy small,.hero-badge,.meta-pill,.stat small{text-transform:uppercase;letter-spacing:.1em;font-size:.73rem;font-weight:700}
-    .brand-copy small{opacity:.72;display:block;margin-bottom:4px}.brand-copy strong{display:block;font-size:1.02rem}
-    .hero-badge{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
-    .hero-grid{position:relative;z-index:1;grid-template-columns:1.3fr .9fr;margin-top:26px;align-items:end}
-    h1,h2,h3{font-family:"Fraunces",serif;margin:0;letter-spacing:-.02em} h1{font-size:clamp(2.7rem,5vw,4.6rem);line-height:1.01;max-width:12ch}
-    .hero p{max-width:60ch;line-height:1.75;margin:20px 0 24px;color:rgba(255,255,255,.84);font-size:1.02rem}
-    .meta-row,.button-row{display:flex;flex-wrap:wrap;gap:12px}
-    .meta-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16)}
-    .hero-panel,.card,.summary-card,.note-block{border-radius:24px}.hero-panel{background:rgba(255,255,255,.1);padding:20px;border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px)}
-    .hero-list,.form-grid,.stats,.filters,.side-stack,.summary-list,.recent-feed{display:grid;gap:14px}.hero-list-item,.summary-row,.recent-item{display:flex;justify-content:space-between;gap:12px;align-items:center}
-    .hero-list-item{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)} .hero-list-item:last-child{border-bottom:none;padding-bottom:0}
-    .hero-list-item strong,.summary-row strong,.recent-item strong{display:block;font-size:.96rem;margin-bottom:2px}
-    .hero-list-item span,.summary-row span,.recent-item span,.section-title p,.muted,.footnote{color:rgba(23,50,77,.72);line-height:1.65} .hero-list-item span{color:rgba(255,255,255,.75);font-size:.9rem}
-    .token,.lesson-count,.badge{border-radius:999px;font-size:.76rem;font-weight:700;white-space:nowrap} .token{padding:8px 10px;background:rgba(255,255,255,.14)}
-    .content{grid-template-columns:minmax(0,1fr);margin-top:22px;align-items:start}
-    .card{min-width:0;background:rgba(255,255,255,.86);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,32,91,.08);backdrop-filter:blur(12px)} .card-inner{padding:24px}
-    .section-title{grid-template-columns:1fr auto;margin-bottom:20px}
-    .tab-switch{display:inline-flex;background:#e8f1fa;border-radius:999px;padding:4px;gap:4px;flex-wrap:wrap}
-    .tab-button{border:none;background:transparent;padding:10px 16px;border-radius:999px;font-weight:700;color:var(--rice-blue);cursor:pointer;font-size:.88rem}
-    .tab-button.active{background:var(--rice-blue);color:#fff;box-shadow:0 10px 24px rgba(0,32,91,.18)} .panel{display:none}.panel.active{display:block}
-    .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.field,.full{display:grid;gap:8px}.full{grid-column:1 / -1}
-    label{font-size:.88rem;font-weight:700;color:var(--slate)}
-    input,select,textarea{width:100%;border:1px solid rgba(0,32,91,.16);border-radius:14px;padding:14px 15px;font:inherit;color:var(--ink);background:rgba(255,255,255,.92)}
-    textarea{min-height:118px;resize:vertical} input:focus,select:focus,textarea:focus{outline:none;border-color:var(--rice-teal);box-shadow:0 0 0 4px rgba(31,165,169,.14)}
-    .primary,.secondary,.ghost{border:none;border-radius:999px;padding:13px 18px;font-weight:700;cursor:pointer}
-    .primary{color:#fff;background:linear-gradient(135deg,var(--rice-blue),#00489a);box-shadow:0 12px 24px rgba(0,32,91,.2)} .secondary{color:var(--rice-blue);background:rgba(0,32,91,.08)} .ghost{color:var(--slate);background:rgba(31,165,169,.09)}
-    .mini-note,.recent-item,.empty{padding:14px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(31,165,169,.08),rgba(159,216,255,.18));color:var(--slate);font-size:.93rem;line-height:1.65}
-    .stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}
-    .stat{padding:18px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(236,245,252,.86));border:1px solid rgba(0,32,91,.08)} .stat strong{font-size:1.9rem;color:var(--rice-blue);display:block;margin:8px 0 6px}
-    .filters{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:16px} .admin-grid{grid-template-columns:minmax(0,1fr)} .footer-callout{grid-template-columns:1.2fr .8fr}
-    .table-shell{overflow-x:auto;border-radius:22px}
-    .lessons-table{width:100%;min-width:860px;border-collapse:collapse;font-size:.94rem} .lessons-table th,.lessons-table td{text-align:left;padding:14px 12px;border-bottom:1px solid rgba(0,32,91,.08);vertical-align:top}
-    .lessons-table th{color:rgba(23,50,77,.72);text-transform:uppercase;letter-spacing:.08em;font-size:.72rem}
-    .badge{display:inline-flex;align-items:center;padding:7px 10px}.badge.completed{background:rgba(41,183,130,.14);color:#0f7a52}.badge.scheduled{background:rgba(0,72,154,.12);color:#00489a}.badge.cancelled{background:rgba(214,66,66,.12);color:#b03636}
-    .badge.paid{background:rgba(41,183,130,.14);color:#0f7a52}.badge.unpaid{background:rgba(214,66,66,.12);color:#b03636}.badge.waived{background:rgba(0,72,154,.12);color:#00489a}
-    .summary-card{height:100%;padding:18px;border:1px solid rgba(0,32,91,.09);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92));border-radius:24px}.side-stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}.calendar-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(320px,.82fr);gap:18px;align-items:start}.calendar-sidebar{display:grid;gap:16px}.calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.09);border-radius:24px;background:rgba(255,255,255,.92)}.calendar-shell iframe{display:block;width:100%;height:620px;border:0}.calendar-feed{display:grid;gap:14px}.calendar-row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(0,32,91,.08)}.calendar-row:last-child{border-bottom:none;padding-bottom:0}.calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none}.calendar-row a:hover{text-decoration:underline}.calendar-meta{display:block;color:rgba(23,50,77,.72);line-height:1.55;font-size:.92rem;margin-top:4px}.calendar-pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;background:rgba(31,165,169,.12);color:#0b6e72;font-size:.76rem;font-weight:800;white-space:nowrap}
-    .lesson-count{min-width:42px;text-align:center;padding:7px 10px;background:rgba(0,32,91,.08);color:var(--rice-blue);font-weight:800;border-radius:999px;font-size:.76rem}
-    .recent-feed{margin-top:18px}.recent-item{border:1px solid rgba(0,32,91,.08)} .footnote{font-size:.95rem}
-    .note-block{padding:20px;background:linear-gradient(135deg,rgba(0,32,91,.95),rgba(7,87,138,.92));color:#fff}.note-block ul{margin:14px 0 0 18px;padding:0;line-height:1.7}
-    .empty{text-align:center;border:1px dashed rgba(0,32,91,.16);background:rgba(236,245,252,.65);padding:14px 16px;border-radius:16px}
+    body{margin:0;font-family:"Manrope",sans-serif;color:var(--ink);background:#f4f6f9;min-height:100vh}
+    h2,h3{font-family:"Manrope",sans-serif;margin:0;font-weight:800}
 
-    /* Receipt section in form */
-    .receipt-separator{grid-column:1/-1;border-top:2px dashed rgba(0,32,91,.12);margin:8px 0;padding-top:8px}
-    .receipt-separator label{font-size:.82rem;color:var(--rice-teal);text-transform:uppercase;letter-spacing:.08em}
-    .receipt-inline{display:flex;gap:8px;align-items:center;font-size:.86rem;color:var(--slate)}
+    /* Header */
+    .app-header{display:flex;align-items:center;gap:14px;padding:14px 28px;background:var(--rice-blue);color:#fff}
+    .crest{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.12);display:grid;place-items:center;border:1px solid rgba(255,255,255,.16);font-weight:800;font-size:.88rem;letter-spacing:.06em}
+    .brand-copy strong{display:block;font-size:.98rem}
+    .brand-copy small{display:block;font-size:.68rem;opacity:.65;text-transform:uppercase;letter-spacing:.08em;margin-top:1px}
+
+    .shell{width:min(1440px,calc(100% - 32px));margin:0 auto;padding:20px 0 40px}
+    .content{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);align-items:start}
+    .card{min-width:0;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)} .card-inner{padding:22px}
+    .section-title{display:grid;grid-template-columns:1fr auto;margin-bottom:18px;gap:14px;align-items:start}
+    .section-title p{color:rgba(23,50,77,.55);line-height:1.5;margin:2px 0 0;font-size:.88rem}
+
+    .tab-switch{display:inline-flex;background:#edf0f5;border-radius:8px;padding:3px;gap:2px;flex-wrap:wrap}
+    .tab-button{border:none;background:transparent;padding:8px 14px;border-radius:6px;font-weight:700;color:var(--slate);cursor:pointer;font-size:.84rem;transition:all .15s}
+    .tab-button.active{background:#fff;color:var(--rice-blue);box-shadow:0 1px 4px rgba(0,32,91,.1)} .panel{display:none}.panel.active{display:block}
+
+    .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .field,.full{display:grid;gap:5px}.full{grid-column:1 / -1}
+    label{font-size:.82rem;font-weight:700;color:var(--slate)}
+    input,select,textarea{width:100%;border:1px solid rgba(0,32,91,.12);border-radius:8px;padding:10px 12px;font:inherit;color:var(--ink);background:#fafbfc;font-size:.92rem}
+    textarea{min-height:90px;resize:vertical} input:focus,select:focus,textarea:focus{outline:none;border-color:var(--rice-teal);box-shadow:0 0 0 3px rgba(31,165,169,.1);background:#fff}
+
+    .primary,.secondary,.ghost{border:none;border-radius:8px;padding:10px 16px;font-weight:700;cursor:pointer;font-size:.86rem;transition:all .15s}
+    .primary{color:#fff;background:var(--rice-blue)} .primary:hover{background:#001a4a}
+    .secondary{color:var(--rice-blue);background:rgba(0,32,91,.06)} .secondary:hover{background:rgba(0,32,91,.1)}
+    .ghost{color:var(--slate);background:rgba(0,32,91,.04)} .ghost:hover{background:rgba(0,32,91,.08)}
+    .button-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+    .mini-note{padding:10px 12px;border-radius:8px;background:#f0f3f7;color:var(--slate);font-size:.84rem;line-height:1.55;margin-top:14px}
+
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
+    .stat{padding:14px;border-radius:10px;background:#f6f8fb;border:1px solid rgba(0,32,91,.05)}
+    .stat strong{font-size:1.5rem;color:var(--rice-blue);display:block;margin:3px 0 1px}
+    .stat small{text-transform:uppercase;letter-spacing:.06em;font-size:.68rem;font-weight:700;color:var(--slate)}
+    .stat span{color:rgba(23,50,77,.55);font-size:.8rem}
+
+    .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+    .admin-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+
+    .table-shell{overflow-x:auto;border-radius:10px;border:1px solid rgba(0,32,91,.06)}
+    .lessons-table{width:100%;min-width:860px;border-collapse:collapse;font-size:.88rem}
+    .lessons-table th,.lessons-table td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(0,32,91,.05);vertical-align:top}
+    .lessons-table th{color:rgba(23,50,77,.55);text-transform:uppercase;letter-spacing:.06em;font-size:.7rem;background:#f9fafb}
+    .lessons-table tbody tr:hover{background:#f6f8fb}
+
+    .badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:5px;font-size:.74rem;font-weight:700;white-space:nowrap}
+    .badge.completed{background:rgba(41,183,130,.12);color:#0f7a52}.badge.scheduled{background:rgba(0,72,154,.1);color:#00489a}.badge.cancelled{background:rgba(214,66,66,.1);color:#b03636}
+    .badge.paid{background:rgba(41,183,130,.12);color:#0f7a52}.badge.unpaid{background:rgba(214,66,66,.1);color:#b03636}.badge.waived{background:rgba(0,72,154,.1);color:#00489a}
+
+    .summary-card{padding:16px;border:1px solid rgba(0,32,91,.06);background:#fff;border-radius:12px}
+    .summary-card h3{font-size:.9rem;margin:0 0 10px}
+    .side-stack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:start}
+    .summary-list{display:grid;gap:8px}
+    .summary-row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+    .summary-row strong{display:block;font-size:.88rem;margin-bottom:1px}
+    .summary-row span{color:rgba(23,50,77,.55);font-size:.82rem;line-height:1.45}
+    .lesson-count{min-width:34px;text-align:center;padding:4px 8px;background:rgba(0,32,91,.06);color:var(--rice-blue);font-weight:800;border-radius:5px;font-size:.74rem}
+
+    .muted{color:rgba(23,50,77,.55);line-height:1.5;font-size:.84rem}
+    .empty{text-align:center;border:1px dashed rgba(0,32,91,.1);background:#f9fafb;padding:12px 14px;border-radius:8px;color:var(--slate);font-size:.88rem}
+
+    .calendar-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:14px;align-items:start}
+    .calendar-sidebar{display:grid;gap:12px}
+    .calendar-shell{overflow:hidden;border:1px solid rgba(0,32,91,.06);border-radius:10px;background:#fff}
+    .calendar-shell iframe{display:block;width:100%;height:560px;border:0}
+    .calendar-feed{display:grid;gap:8px}
+    .calendar-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(0,32,91,.05)}
+    .calendar-row:last-child{border-bottom:none;padding-bottom:0}
+    .calendar-row a{color:var(--rice-blue);font-weight:700;text-decoration:none;font-size:.88rem}
+    .calendar-row a:hover{text-decoration:underline}
+    .calendar-meta{display:block;color:rgba(23,50,77,.55);line-height:1.45;font-size:.82rem;margin-top:2px}
+    .calendar-pill{display:inline-flex;align-items:center;border-radius:5px;padding:4px 8px;background:rgba(31,165,169,.1);color:#0b6e72;font-size:.74rem;font-weight:700;white-space:nowrap}
+
+    .recent-feed{display:grid;gap:8px;margin-top:14px}
+    .recent-item{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 12px;border-radius:8px;background:#f6f8fb;border:1px solid rgba(0,32,91,.05);font-size:.88rem}
+    .recent-item strong{display:block;font-size:.88rem;margin-bottom:1px}
+    .recent-item span{color:rgba(23,50,77,.55);font-size:.82rem;line-height:1.45}
+
+    /* Receipt section */
+    .receipt-separator{grid-column:1/-1;border-top:2px dashed rgba(0,32,91,.08);margin:4px 0;padding-top:4px}
+    .receipt-separator label{font-size:.76rem;color:var(--rice-teal);text-transform:uppercase;letter-spacing:.06em}
 
     /* Student Portal */
-    .student-search-bar{display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:22px;align-items:end}
-    .student-profile-header{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;margin-bottom:24px}
-    .student-avatar{width:64px;height:64px;border-radius:20px;background:linear-gradient(135deg,var(--rice-blue),var(--rice-teal));display:grid;place-items:center;color:#fff;font-size:1.6rem;font-weight:800}
-    .student-meta{display:grid;gap:4px}
-    .student-meta h3{font-size:1.4rem}
-    .student-meta span{color:rgba(23,50,77,.72);font-size:.92rem}
-    .student-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
-    .progress-timeline{display:grid;gap:0;position:relative;padding-left:28px}
-    .progress-timeline::before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--rice-teal),rgba(31,165,169,.2))}
-    .timeline-entry{position:relative;padding:14px 0 14px 0;border-bottom:1px solid rgba(0,32,91,.06)}
+    .student-search-bar{display:grid;grid-template-columns:1fr auto;gap:12px;margin-bottom:18px;align-items:end}
+    .student-profile-header{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:18px}
+    .student-avatar{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--rice-blue),var(--rice-teal));display:grid;place-items:center;color:#fff;font-size:1.3rem;font-weight:800}
+    .student-meta{display:grid;gap:2px}
+    .student-meta h3{font-size:1.15rem}
+    .student-meta span{color:rgba(23,50,77,.55);font-size:.84rem}
+    .student-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+    .progress-timeline{display:grid;gap:0;position:relative;padding-left:26px}
+    .progress-timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--rice-teal),rgba(31,165,169,.15))}
+    .timeline-entry{position:relative;padding:10px 0;border-bottom:1px solid rgba(0,32,91,.04)}
     .timeline-entry:last-child{border-bottom:none}
-    .timeline-dot{position:absolute;left:-22px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--rice-teal);border:2px solid #fff;box-shadow:0 2px 8px rgba(31,165,169,.3)}
-    .timeline-entry strong{display:block;font-size:.94rem;margin-bottom:4px}
-    .timeline-entry .timeline-date{font-size:.82rem;color:rgba(23,50,77,.6);margin-bottom:6px}
-    .timeline-entry .timeline-notes{font-size:.9rem;color:var(--slate);line-height:1.6;background:rgba(31,165,169,.06);padding:10px 14px;border-radius:12px;margin-top:8px}
-    .timeline-entry .timeline-receipt{font-size:.82rem;margin-top:6px;color:rgba(23,50,77,.6)}
+    .timeline-dot{position:absolute;left:-21px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--rice-teal);border:2px solid #fff;box-shadow:0 1px 4px rgba(31,165,169,.2)}
+    .timeline-entry strong{display:block;font-size:.88rem;margin-bottom:2px}
+    .timeline-entry .timeline-date{font-size:.78rem;color:rgba(23,50,77,.5);margin-bottom:4px}
+    .timeline-entry .timeline-notes{font-size:.84rem;color:var(--slate);line-height:1.5;background:rgba(31,165,169,.05);padding:8px 12px;border-radius:8px;margin-top:6px}
+    .timeline-entry .timeline-receipt{font-size:.78rem;margin-top:4px;color:rgba(23,50,77,.5)}
 
     /* Instructor Management */
-    .instructor-roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:22px}
-    .instructor-card{padding:20px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,252,.92));border:1px solid rgba(0,32,91,.09);display:grid;gap:12px}
-    .instructor-card.inactive{opacity:.55}
+    .instructor-roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:18px}
+    .instructor-card{padding:16px;border-radius:12px;background:#fff;border:1px solid rgba(0,32,91,.06);display:grid;gap:10px}
+    .instructor-card.inactive{opacity:.5}
     .instructor-card-header{display:flex;justify-content:space-between;align-items:center}
-    .instructor-card-header h3{font-size:1.05rem}
-    .instructor-card-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .instructor-card-stat{text-align:center;padding:10px;border-radius:14px;background:rgba(0,32,91,.04)}
-    .instructor-card-stat strong{display:block;font-size:1.3rem;color:var(--rice-blue)}
-    .instructor-card-stat span{font-size:.76rem;color:rgba(23,50,77,.72)}
-    .instructor-card-actions{display:flex;gap:8px;flex-wrap:wrap}
-    .instructor-card-actions button{font-size:.82rem;padding:8px 14px}
-    .status-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+    .instructor-card-header h3{font-size:.95rem;margin:0}
+    .instructor-card-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .instructor-card-stat{text-align:center;padding:8px;border-radius:8px;background:#f6f8fb}
+    .instructor-card-stat strong{display:block;font-size:1.15rem;color:var(--rice-blue)}
+    .instructor-card-stat span{font-size:.7rem;color:rgba(23,50,77,.55)}
+    .instructor-card-actions{display:flex;gap:6px;flex-wrap:wrap}
+    .instructor-card-actions button{font-size:.78rem;padding:6px 12px}
+    .status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
     .status-dot.active{background:#29b782}.status-dot.inactive{background:#d64242}
-    .add-instructor-form{display:grid;grid-template-columns:1fr auto;gap:14px;margin-bottom:22px;align-items:end}
-    .danger{color:#fff;background:linear-gradient(135deg,#b03636,#d64242);border:none;border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;font-size:.82rem}
-    .success{color:#fff;background:linear-gradient(135deg,#0f7a52,#29b782);border:none;border-radius:999px;padding:8px 14px;font-weight:700;cursor:pointer;font-size:.82rem}
+    .add-instructor-form{display:grid;grid-template-columns:1fr auto;gap:12px;margin-bottom:18px;align-items:end}
+    .danger{color:#fff;background:#c53030;border:none;border-radius:6px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:.78rem}
+    .success{color:#fff;background:#0f7a52;border:none;border-radius:6px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:.78rem}
 
-    @media (max-width:1120px){.hero-grid,.content,.admin-grid,.footer-callout,.side-stack,.calendar-grid{grid-template-columns:1fr}.stats,.student-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-shell iframe{height:480px}.instructor-roster{grid-template-columns:1fr}}
-    @media (max-width:760px){.shell{width:min(100%,calc(100% - 18px));padding-top:10px}.hero,.card-inner{padding:18px}.hero-top,.section-title{grid-template-columns:1fr}.form-grid,.stats,.filters,.student-stats{grid-template-columns:1fr}h1{font-size:2.4rem}.lessons-table{display:block;overflow-x:auto}.tab-switch{justify-content:center}}
+    @media (max-width:1120px){.content,.admin-grid,.side-stack,.calendar-grid{grid-template-columns:1fr}.stats,.student-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:repeat(2,minmax(0,1fr))}.calendar-shell iframe{height:420px}.instructor-roster{grid-template-columns:1fr}}
+    @media (max-width:760px){.shell{width:min(100%,calc(100% - 16px));padding-top:8px}.card-inner{padding:14px}.section-title{grid-template-columns:1fr}.form-grid,.stats,.filters,.student-stats{grid-template-columns:1fr}.lessons-table{display:block;overflow-x:auto}.tab-switch{justify-content:center}.app-header{padding:10px 16px}}
   </style>
 </head>
 <body>
+  <header class="app-header">
+    <div class="crest">R</div>
+    <div class="brand-copy">
+      <strong>Rice Swim Lesson Desk</strong>
+      <small>Gibbs Recreation and Wellness Center</small>
+    </div>
+  </header>
   <div class="shell">
-    <section class="hero">
-      <div class="hero-top">
-        <div class="brand-lockup"><div class="crest">R</div><div class="brand-copy"><small>Barbara and David Gibbs Recreation and Wellness Center</small><strong>Rice Swim Lesson Desk</strong></div></div>
-        <div class="hero-badge">Student prototype for Maggie</div>
-      </div>
-      <div class="hero-grid">
-        <div>
-          <h1>A cleaner way to keep up with swim lessons.</h1>
-          <p>I rebuilt this around a separate private-lessons calendar that lives on my own Rice account just for this desk. The point was not to make a huge polished platform. I wanted something an instructor could use fast after a lesson, while giving Maggie one place to check what happened this week.</p>
-          <div class="meta-row"><div class="meta-pill">Quick lesson entry</div><div class="meta-pill">Actual calendar pulled in</div><div class="meta-pill">Receipt tracking</div><div class="meta-pill">Student portal</div></div>
-        </div>
-        <aside class="hero-panel">
-          <h3>What I focused on</h3>
-          <div class="hero-list">
-            <div class="hero-list-item"><div><strong>Less typing after a lesson</strong><span>One form with the fields staff actually needs instead of scattered notes.</span></div><div class="token">01</div></div>
-            <div class="hero-list-item"><div><strong>Receipt integration</strong><span>Payment tracking built right into the lesson log so receipts stay aligned.</span></div><div class="token">02</div></div>
-            <div class="hero-list-item"><div><strong>Student portal</strong><span>Students can look up their own lesson history, notes, and progress over time.</span></div><div class="token">03</div></div>
-            <div class="hero-list-item"><div><strong>Instructor management</strong><span>Easy roster updates for turnover without losing lesson history.</span></div><div class="token">04</div></div>
-          </div>
-        </aside>
-      </div>
-    </section>
     <main class="content">
       <section class="card">
         <div class="card-inner">
           <div class="section-title">
-            <div><h2>Lesson Desk</h2><p>Log lessons, check receipts, look up students, or manage the instructor roster.</p></div>
+            <div><h2>Lesson Desk</h2><p>Log lessons, manage receipts, look up students, or update the instructor roster.</p></div>
             <div class="tab-switch">
               <button class="tab-button active" type="button" data-tab-target="instructor-panel">Instructor</button>
               <button class="tab-button" type="button" data-tab-target="admin-panel">Admin</button>
@@ -156,7 +171,7 @@
                 <div class="field"><label for="status">Status</label><select id="status" name="status" required><option value="Completed">Completed</option><option value="Scheduled">Scheduled</option><option value="Cancelled">Cancelled</option></select></div>
                 <div class="field"><label for="location">Location</label><select id="location" name="location" required><option value="Competition Pool">Competition Pool</option><option value="Recreation Pool">Recreation Pool</option><option value="Shallow water area">Shallow water area</option></select></div>
                 <div class="field"><label for="focusArea">Focus area</label><input id="focusArea" name="focusArea" type="text" placeholder="Freestyle confidence, treading water, flip turns"></div>
-                <div class="full"><label for="notes">Instructor notes</label><textarea id="notes" name="notes" placeholder="Add progress notes, parent follow-up items, cancellations, or anything admin should see."></textarea></div>
+                <div class="full"><label for="notes">Instructor notes</label><textarea id="notes" name="notes" placeholder="Progress notes, parent follow-up items, cancellations, or anything admin should see."></textarea></div>
                 <div class="receipt-separator"><label>Receipt / Payment</label></div>
                 <div class="field"><label for="receiptNumber">Receipt #</label><input id="receiptNumber" name="receiptNumber" type="text" placeholder="e.g. REC-2026-0042"></div>
                 <div class="field"><label for="amount">Amount ($)</label><input id="amount" name="amount" type="number" step="0.01" min="0" placeholder="0.00"></div>
@@ -165,7 +180,7 @@
               </div>
               <div class="button-row"><button class="primary" type="submit">Log lesson</button></div>
             </form>
-            <div class="mini-note">Form entries stay in the browser in this version, and the calendar section below is tied to the new Rice Swim Lesson Desk calendar on <code>as610@rice.edu</code>.</div>
+            <div class="mini-note">Data is stored locally in the browser. Scheduled lessons auto-open in Google Calendar for syncing.</div>
             <div class="recent-feed" id="recent-feed"></div>
           </div>
 
@@ -181,11 +196,11 @@
             </div>
             <div class="button-row"><button class="secondary" type="button" id="export-csv">Export CSV</button><button class="ghost" type="button" id="clear-filters">Clear filters</button></div>
             <div class="admin-grid">
-              <div class="card"><div class="card-inner"><div class="section-title"><div><h3>Lesson log</h3><p class="muted">Lessons with receipt status. Filter and export as needed.</p></div></div><div id="table-container"></div></div></div>
+              <div class="card"><div class="card-inner"><div class="section-title"><div><h3>Lesson log</h3><p class="muted">All logged lessons with receipt status.</p></div></div><div id="table-container"></div></div></div>
               <div class="side-stack">
                 <div class="summary-card"><h3>By instructor</h3><div class="summary-list" id="instructor-summary"></div></div>
                 <div class="summary-card"><h3>By student</h3><div class="summary-list" id="student-summary"></div></div>
-                <div class="summary-card"><h3>Upcoming from Rice Swim Private Lessons</h3><div class="summary-list" id="timeline-summary"></div></div>
+                <div class="summary-card"><h3>Upcoming scheduled</h3><div class="summary-list" id="timeline-summary"></div></div>
               </div>
             </div>
           </div>
@@ -208,9 +223,9 @@
               <button class="primary" type="button" id="add-instructor-btn">Add</button>
             </div>
             <div class="instructor-roster" id="instructor-roster"></div>
-            <div class="summary-card" style="margin-top:14px">
+            <div class="summary-card" style="margin-top:12px">
               <h3>Instructor assignment history</h3>
-              <p class="muted">Shows which instructors have taught each student, helping manage handoffs during turnover.</p>
+              <p class="muted">Which instructors have taught each student, for managing handoffs.</p>
               <div id="assignment-history"></div>
             </div>
           </div>
@@ -220,12 +235,12 @@
       <!-- CALENDAR SECTION -->
       <section class="card">
         <div class="card-inner">
-          <div class="section-title"><div><h2>Rice Swim Lesson Desk calendar</h2><p>This is a new calendar on <code>as610@rice.edu</code> dedicated to tracking swim lessons. Add events here and they will appear in the embed below.</p></div></div>
+          <div class="section-title"><div><h2>Calendar</h2><p>Scheduled lessons sync to the Rice Swim Lesson Desk calendar. Click a lesson to add it to Google Calendar.</p></div></div>
           <div class="calendar-grid">
-            <div class="summary-card"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Lesson Desk calendar" src="https://calendar.google.com/calendar/embed?src=c_a3fafe30a95682f6f5ef551c531454fb2d3c2ab726cb56e83b14cfb4f45ec50d%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
+            <div class="calendar-shell"><iframe id="cal-iframe" title="Rice Swim Lesson Desk calendar" src="https://calendar.google.com/calendar/embed?src=c_a3fafe30a95682f6f5ef551c531454fb2d3c2ab726cb56e83b14cfb4f45ec50d%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div>
             <div class="calendar-sidebar">
-              <div class="summary-card"><h3>Calendar snapshot</h3><div class="summary-list" id="calendar-status"></div></div>
-              <div class="summary-card"><h3>Upcoming lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
+              <div class="summary-card"><h3>Overview</h3><div class="summary-list" id="calendar-status"></div></div>
+              <div class="summary-card"><h3>Scheduled lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
             </div>
           </div>
         </div>
@@ -237,10 +252,7 @@
     const storageKey = "rice-swim-lesson-desk-private-lessons";
     const rosterKey = "rice-swim-lesson-desk-instructors";
     const defaultInstructors = ["Antony Saleh","Sophia Kim","Jordan Patel","Mia Alvarez","Noah Bennett"];
-
-    const actualCalendarEvents = [];
-    // Calendar events will populate as lessons are added to the new "Rice Swim Lesson Desk" calendar on as610@rice.edu
-    // Old calendar (c_f51d269063b85665a...) has been disconnected but not deleted
+    const CALENDAR_ID = "c_a3fafe30a95682f6f5ef551c531454fb2d3c2ab726cb56e83b14cfb4f45ec50d@group.calendar.google.com";
 
     /* ---- Data ---- */
     const saveLessons = (data) => localStorage.setItem(storageKey, JSON.stringify(data));
@@ -275,6 +287,7 @@
     const studentPortalContent = document.getElementById("student-portal-content");
     const instructorRosterEl = document.getElementById("instructor-roster");
     const assignmentHistory = document.getElementById("assignment-history");
+    const calIframe = document.getElementById("cal-iframe");
 
     /* ---- Helpers ---- */
     function getActiveInstructors() { return roster.filter(i => i.active).map(i => i.name); }
@@ -292,7 +305,6 @@
 
     function formatDate(dateStr) { const d = new Date(`${dateStr}T12:00:00`); return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric" }).format(d); }
     const formatDateTime = (l) => `${formatDate(l.lessonDate)} at ${l.lessonTime}`;
-    function formatEventRange(start, end) { const s = new Date(start); const e = new Date(end); const day = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(s); const st = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(s); const et = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit" }).format(e); return `${day} - ${st} to ${et}`; }
     const parseMinutes = (d) => Number.parseInt(d, 10) || 0;
 
     function filteredLessons() {
@@ -304,32 +316,57 @@
         .sort((a, b) => `${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`));
     }
 
+    /* ---- Calendar URL builder ---- */
+    function buildCalendarUrl(lesson) {
+      const dateClean = lesson.lessonDate.replace(/-/g, "");
+      const [hh, mm] = lesson.lessonTime.split(":");
+      const startStr = `${dateClean}T${hh}${mm}00`;
+      const durMin = parseInt(lesson.duration) || 60;
+      const startMs = new Date(`${lesson.lessonDate}T${lesson.lessonTime}`).getTime();
+      const end = new Date(startMs + durMin * 60000);
+      const endStr = `${end.getFullYear()}${String(end.getMonth()+1).padStart(2,"0")}${String(end.getDate()).padStart(2,"0")}T${String(end.getHours()).padStart(2,"0")}${String(end.getMinutes()).padStart(2,"0")}00`;
+      const title = encodeURIComponent(`Swim Lesson - ${lesson.studentName}`);
+      const details = encodeURIComponent(`Instructor: ${lesson.instructorName}\nType: ${lesson.lessonType}\nLevel: ${lesson.studentLevel}\nFocus: ${lesson.focusArea || "N/A"}`);
+      const location = encodeURIComponent(`${lesson.location}, Gibbs Rec Center, Rice University`);
+      return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startStr}/${endStr}&details=${details}&location=${location}`;
+    }
+
+    function refreshCalendarIframe() {
+      if (calIframe) {
+        const src = calIframe.src;
+        calIframe.src = "";
+        setTimeout(() => { calIframe.src = src; }, 200);
+      }
+    }
+
     /* ---- Render: Stats ---- */
     function renderStats(active) {
+      if (!lessons.length) { statsEl.innerHTML = ""; statsEl.style.display = "none"; return; }
+      statsEl.style.display = "";
       const completed = active.filter(i => i.status === "Completed").length;
       const scheduled = active.filter(i => i.status === "Scheduled").length;
       const uniqueStudents = new Set(active.map(i => i.studentName)).size;
       const totalRevenue = active.reduce((s, i) => s + (parseFloat(i.amount) || 0), 0);
       const cards = [
-        { label: "Visible lessons", value: active.length, note: "Current filtered set" },
-        { label: "Completed", value: completed, note: "Lessons already delivered" },
-        { label: "Scheduled", value: scheduled, note: "Future or pending lessons" },
-        { label: "Revenue", value: `$${totalRevenue.toFixed(0)}`, note: `${uniqueStudents} unique students` }
+        { label: "Showing", value: active.length },
+        { label: "Completed", value: completed },
+        { label: "Scheduled", value: scheduled },
+        { label: "Revenue", value: `$${totalRevenue.toFixed(0)}`, note: `${uniqueStudents} student${uniqueStudents !== 1 ? "s" : ""}` }
       ];
-      statsEl.innerHTML = cards.map(c => `<article class="stat"><small>${c.label}</small><strong>${c.value}</strong><span>${c.note}</span></article>`).join("");
+      statsEl.innerHTML = cards.map(c => `<article class="stat"><small>${c.label}</small><strong>${c.value}</strong>${c.note ? `<span>${c.note}</span>` : ""}</article>`).join("");
     }
 
     /* ---- Render: Table (with receipts) ---- */
     function renderTable(active) {
-      if (!active.length) { tableContainer.innerHTML = `<div class="empty">No lessons match the current filters yet.</div>`; return; }
+      if (!active.length) { tableContainer.innerHTML = `<div class="empty">No lessons match the current filters.</div>`; return; }
       tableContainer.innerHTML = `<div class="table-shell"><table class="lessons-table"><thead><tr><th>Date</th><th>Instructor</th><th>Student</th><th>Lesson</th><th>Status</th><th>Receipt</th><th>Notes</th></tr></thead><tbody>${active.map(l => `<tr>
         <td><strong>${formatDate(l.lessonDate)}</strong><br><span class="muted">${l.lessonTime} - ${l.duration}</span></td>
         <td><strong>${l.instructorName}</strong><br><span class="muted">${l.location}</span></td>
         <td><strong>${l.studentName}</strong><br><span class="muted">${l.studentLevel}</span></td>
-        <td><strong>${l.lessonType}</strong><br><span class="muted">${l.focusArea || "No focus area"}</span></td>
+        <td><strong>${l.lessonType}</strong><br><span class="muted">${l.focusArea || "N/A"}</span></td>
         <td><span class="badge ${l.status.toLowerCase()}">${l.status}</span></td>
         <td>${l.receiptNumber ? `<strong>${l.receiptNumber}</strong><br>` : ""}<span class="muted">${l.amount ? "$" + parseFloat(l.amount).toFixed(2) : "N/A"}</span>${l.paymentStatus ? `<br><span class="badge ${l.paymentStatus.toLowerCase()}">${l.paymentStatus}</span>` : ""}</td>
-        <td>${l.notes || "<span class='muted'>No notes</span>"}</td>
+        <td>${l.notes || "<span class='muted'>--</span>"}</td>
       </tr>`).join("")}</tbody></table></div>`;
     }
 
@@ -341,21 +378,29 @@
       container.innerHTML = entries.map(([n, c]) => `<div class="summary-row"><div><strong>${n}</strong><span>${c === 1 ? "1 lesson" : `${c} lessons`}</span></div><div class="lesson-count">${c}</div></div>`).join("");
     }
     function renderTimeline() {
-      const upcoming = actualCalendarEvents.slice(0, 5);
-      if (!upcoming.length) { timelineSummary.innerHTML = `<div class="empty">No calendar events pulled in yet.</div>`; return; }
-      timelineSummary.innerHTML = upcoming.map(e => `<div class="summary-row"><div><strong>${e.title}</strong><span>${formatEventRange(e.start, e.end)}</span></div><div class="lesson-count">Live</div></div>`).join("");
+      const upcoming = lessons.filter(l => l.status === "Scheduled").sort((a, b) => `${a.lessonDate} ${a.lessonTime}`.localeCompare(`${b.lessonDate} ${b.lessonTime}`)).slice(0, 5);
+      if (!upcoming.length) { timelineSummary.innerHTML = `<div class="empty">No upcoming lessons scheduled.</div>`; return; }
+      timelineSummary.innerHTML = upcoming.map(l => `<div class="summary-row"><div><strong>${l.studentName} - ${l.lessonType}</strong><span>${formatDate(l.lessonDate)} at ${l.lessonTime} with ${l.instructorName}</span></div><div class="lesson-count">${l.duration}</div></div>`).join("");
     }
     function renderRecentFeed() {
-      const recent = [...lessons].sort((a, b) => `${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0, 3);
-      const cal = actualCalendarEvents.slice(0, 2);
-      const items = [...recent.map(l => `<article class="recent-item"><div><strong>${l.studentName} - ${l.lessonType}</strong><span>${l.instructorName} - ${formatDateTime(l)}${l.receiptNumber ? ` - ${l.receiptNumber}` : ""}</span></div><span class="badge ${l.status.toLowerCase()}">${l.status}</span></article>`),
-        ...cal.map(e => `<article class="recent-item"><div><strong>${e.title}</strong><span>Calendar pull - ${formatEventRange(e.start, e.end)}</span></div><span class="calendar-pill">Calendar</span></article>`)];
-      recentFeed.innerHTML = items.length ? items.join("") : `<div class="empty">No lesson activity yet.</div>`;
+      const recent = [...lessons].sort((a, b) => `${b.lessonDate} ${b.lessonTime}`.localeCompare(`${a.lessonDate} ${a.lessonTime}`)).slice(0, 4);
+      recentFeed.innerHTML = recent.length ? recent.map(l => `<article class="recent-item"><div><strong>${l.studentName} - ${l.lessonType}</strong><span>${l.instructorName} - ${formatDateTime(l)}${l.receiptNumber ? ` - ${l.receiptNumber}` : ""}</span></div><span class="badge ${l.status.toLowerCase()}">${l.status}</span></article>`).join("") : `<div class="empty">No lesson activity yet.</div>`;
     }
     function renderCalendarFeed() {
-      if (!actualCalendarEvents.length) { calendarFeed.innerHTML = `<div class="empty">No upcoming calendar events found.</div>`; calendarStatus.innerHTML = `<div class="empty">Calendar snapshot unavailable.</div>`; return; }
-      calendarStatus.innerHTML = `<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Lesson Desk calendar on as610@rice.edu.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div>`;
-      calendarFeed.innerHTML = actualCalendarEvents.map(e => `<div class="calendar-row"><div><a href="${e.link}" target="_blank" rel="noreferrer">${e.title}</a><span class="calendar-meta">${formatEventRange(e.start, e.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("");
+      const scheduled = lessons.filter(l => l.status === "Scheduled").sort((a, b) => `${a.lessonDate} ${a.lessonTime}`.localeCompare(`${b.lessonDate} ${b.lessonTime}`));
+      const total = lessons.length;
+      const completed = lessons.filter(l => l.status === "Completed").length;
+      if (!total) {
+        calendarFeed.innerHTML = `<div class="empty">No scheduled lessons.</div>`;
+        calendarStatus.innerHTML = `<div class="empty">No lessons logged yet.</div>`;
+        return;
+      }
+      calendarStatus.innerHTML = `<div class="summary-row"><div><strong>${scheduled.length} upcoming</strong><span>${completed} completed, ${total} total logged</span></div><div class="lesson-count">${scheduled.length}</div></div>`;
+      if (!scheduled.length) { calendarFeed.innerHTML = `<div class="empty">No scheduled lessons.</div>`; return; }
+      calendarFeed.innerHTML = scheduled.slice(0, 8).map(l => {
+        const url = buildCalendarUrl(l);
+        return `<div class="calendar-row"><div><a href="${url}" target="_blank" rel="noreferrer">${l.studentName} - ${l.lessonType}</a><span class="calendar-meta">${formatDate(l.lessonDate)} at ${l.lessonTime} - ${l.duration} with ${l.instructorName}</span></div><span class="calendar-pill">Scheduled</span></div>`;
+      }).join("");
     }
 
     /* ---- Student Portal ---- */
@@ -367,40 +412,38 @@
       const totalMins = studentLessons.reduce((s, l) => s + parseMinutes(l.duration), 0);
       const totalPaid = studentLessons.reduce((s, l) => s + (parseFloat(l.amount) || 0), 0);
       const instructorsUsed = [...new Set(studentLessons.map(l => l.instructorName))];
-      const levels = studentLessons.map(l => l.studentLevel);
-      const currentLevel = levels[0] || "Unknown";
+      const currentLevel = studentLessons[0]?.studentLevel || "Unknown";
       const initials = studentName.split(" ").map(w => w[0]).join("").toUpperCase();
 
-      let html = `
+      studentPortalContent.innerHTML = `
         <div class="student-profile-header">
           <div class="student-avatar">${initials}</div>
           <div class="student-meta">
             <h3>${studentName}</h3>
-            <span>Current level: ${currentLevel} | Instructors: ${instructorsUsed.join(", ")}</span>
+            <span>Level: ${currentLevel} | Instructors: ${instructorsUsed.join(", ")}</span>
           </div>
         </div>
         <div class="student-stats">
           <article class="stat"><small>Total lessons</small><strong>${studentLessons.length}</strong><span>${completed} completed</span></article>
-          <article class="stat"><small>Total time</small><strong>${totalMins} min</strong><span>${(totalMins / 60).toFixed(1)} hours in pool</span></article>
+          <article class="stat"><small>Total time</small><strong>${totalMins} min</strong><span>${(totalMins / 60).toFixed(1)} hours</span></article>
           <article class="stat"><small>Total paid</small><strong>$${totalPaid.toFixed(0)}</strong><span>${studentLessons.filter(l => l.paymentStatus === "Unpaid").length} unpaid</span></article>
           <article class="stat"><small>Current level</small><strong>${currentLevel}</strong><span>${instructorsUsed.length} instructor${instructorsUsed.length !== 1 ? "s" : ""}</span></article>
         </div>
         <div class="summary-card">
-          <h3>Lesson history and instructor notes</h3>
+          <h3>Lesson history</h3>
           <div class="progress-timeline">
             ${studentLessons.map(l => `
               <div class="timeline-entry">
                 <div class="timeline-dot"></div>
                 <div class="timeline-date">${formatDate(l.lessonDate)} at ${l.lessonTime} - ${l.duration} - <span class="badge ${l.status.toLowerCase()}">${l.status}</span></div>
                 <strong>${l.lessonType} with ${l.instructorName}</strong>
-                <span class="muted">${l.focusArea || "No focus area"} | ${l.location} | Level: ${l.studentLevel}</span>
+                <span class="muted">${l.focusArea || "N/A"} | ${l.location} | ${l.studentLevel}</span>
                 ${l.notes ? `<div class="timeline-notes">${l.notes}</div>` : ""}
                 ${l.receiptNumber ? `<div class="timeline-receipt">Receipt: ${l.receiptNumber} | $${parseFloat(l.amount || 0).toFixed(2)} | ${l.paymentStatus || "N/A"}</div>` : ""}
               </div>
             `).join("")}
           </div>
         </div>`;
-      studentPortalContent.innerHTML = html;
     }
 
     /* ---- Instructor Management ---- */
@@ -413,12 +456,12 @@
         return `<div class="instructor-card ${inst.active ? "" : "inactive"}">
           <div class="instructor-card-header">
             <h3><span class="status-dot ${inst.active ? "active" : "inactive"}"></span>${inst.name}</h3>
-            <span class="muted" style="font-size:.78rem">${inst.active ? "Active" : "Inactive"}</span>
+            <span class="muted" style="font-size:.76rem">${inst.active ? "Active" : "Inactive"}</span>
           </div>
           <div class="instructor-card-stats">
-            <div class="instructor-card-stat"><strong>${completed}</strong><span>Lessons taught</span></div>
+            <div class="instructor-card-stat"><strong>${completed}</strong><span>Lessons</span></div>
             <div class="instructor-card-stat"><strong>${students}</strong><span>Students</span></div>
-            <div class="instructor-card-stat"><strong>${totalMins}</strong><span>Minutes logged</span></div>
+            <div class="instructor-card-stat"><strong>${totalMins}</strong><span>Minutes</span></div>
             <div class="instructor-card-stat"><strong>${(totalMins / 60).toFixed(1)}</strong><span>Hours</span></div>
           </div>
           <div class="instructor-card-actions">
@@ -489,6 +532,15 @@
       lesson.id = crypto.randomUUID();
       lessons = [lesson, ...lessons];
       saveLessons(lessons);
+
+      // Auto-open Google Calendar for scheduled lessons
+      if (lesson.status === "Scheduled") {
+        window.open(buildCalendarUrl(lesson), "_blank");
+      }
+
+      // Refresh calendar iframe to reflect any changes
+      refreshCalendarIframe();
+
       lessonForm.reset();
       setTodayDefaults();
       renderAll();
