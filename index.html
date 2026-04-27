@@ -165,7 +165,7 @@
               </div>
               <div class="button-row"><button class="primary" type="submit">Log lesson</button></div>
             </form>
-            <div class="mini-note">Form entries stay in the browser in this version, and the calendar section below is tied directly to the Rice Swim Private Lessons calendar on my <code>as610@rice.edu</code> account.</div>
+            <div class="mini-note">Form entries stay in the browser in this version, and the calendar section below is tied to the new Rice Swim Lesson Desk calendar on <code>as610@rice.edu</code>.</div>
             <div class="recent-feed" id="recent-feed"></div>
           </div>
 
@@ -220,9 +220,9 @@
       <!-- CALENDAR SECTION -->
       <section class="card">
         <div class="card-inner">
-          <div class="section-title"><div><h2>Rice Swim Lesson Desk private-lessons calendar</h2><p>This calendar lives on my <code>as610@rice.edu</code> account and is the source for the embed and the upcoming lesson links on this page.</p></div></div>
+          <div class="section-title"><div><h2>Rice Swim Lesson Desk calendar</h2><p>This is a new calendar on <code>as610@rice.edu</code> dedicated to tracking swim lessons. Add events here and they will appear in the embed below.</p></div></div>
           <div class="calendar-grid">
-            <div class="summary-card"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Lesson Desk private-lessons calendar" src="https://calendar.google.com/calendar/embed?src=c_f51d269063b85665a146225998deffb386c8c71c8dbf8b71061c656d7e1f03ec%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
+            <div class="summary-card"><h3>Embedded calendar</h3><div class="calendar-shell"><iframe title="Rice Swim Lesson Desk calendar" src="https://calendar.google.com/calendar/embed?src=c_a3fafe30a95682f6f5ef551c531454fb2d3c2ab726cb56e83b14cfb4f45ec50d%40group.calendar.google.com&ctz=America%2FChicago&mode=AGENDA&showTitle=0&showTabs=0&showCalendars=0&showNav=1"></iframe></div></div>
             <div class="calendar-sidebar">
               <div class="summary-card"><h3>Calendar snapshot</h3><div class="summary-list" id="calendar-status"></div></div>
               <div class="summary-card"><h3>Upcoming lessons</h3><div class="calendar-feed" id="calendar-feed"></div></div>
@@ -238,18 +238,9 @@
     const rosterKey = "rice-swim-lesson-desk-instructors";
     const defaultInstructors = ["Antony Saleh","Sophia Kim","Jordan Patel","Mia Alvarez","Noah Bennett"];
 
-    const actualCalendarEvents = [
-      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-01T09:30:00-05:00",end:"2026-04-01T10:00:00-05:00",link:"https://www.google.com/calendar/event?eid=Z2g3djdyZWFsdWFrYm42aGJzOWVxbjF2YW8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Aidan | Private w/Ruben 2",start:"2026-04-02T17:00:00-05:00",end:"2026-04-02T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=aGtvOXIycTNwZTlxbWlidmw3Y2FxYmEwMm8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Aidan | Private w/Owen 5",start:"2026-04-06T16:30:00-05:00",end:"2026-04-06T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=ZDU3OWhjb3E4Zm4zZ3Q4MmpucDE4MDY1anMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-07T17:30:00-05:00",end:"2026-04-07T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=MW4wa2FzNzFqcjhxc2drYWM2ODkydGZsbXMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Chris Private Lesson w/Chinhui",start:"2026-04-09T09:00:00-05:00",end:"2026-04-09T09:30:00-05:00",link:"https://www.google.com/calendar/event?eid=Z3VtanJidnZvOXJ0c2o4ZW1ic2g0MG5zZmMgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Aidan | Private w/Ruben 3",start:"2026-04-09T17:00:00-05:00",end:"2026-04-09T17:30:00-05:00",link:"https://www.google.com/calendar/event?eid=aWlkNXVxZzhmdHBsajRmcm05NzBuanZkZzggY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Private Lesson - Eowyn",start:"2026-04-11T15:00:00-05:00",end:"2026-04-11T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=aW5tczJtaG5vMWU5MDhvanZhYWI2ODNjZTQgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Private Lesson - Eowyn",start:"2026-04-12T15:00:00-05:00",end:"2026-04-12T16:00:00-05:00",link:"https://www.google.com/calendar/event?eid=bTUxaDVoajdrM3A5MXRobWtpZ3Mxa2pjazAgY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Aidan | Private w/Owen 6",start:"2026-04-13T16:30:00-05:00",end:"2026-04-13T17:00:00-05:00",link:"https://www.google.com/calendar/event?eid=dGhhbmpiYmI5bDBkdml0c2cycnYwZzg2OG8gY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"},
-      {title:"Private w/ Evelyn & Gloria (Avery)",start:"2026-04-14T17:30:00-05:00",end:"2026-04-14T18:30:00-05:00",link:"https://www.google.com/calendar/event?eid=NWpnYXNnNzkyMnZxbHJ0OGVrb3B0ZGltMjggY19mNTFkMjY5MDYzYjg1NjY1YTE0NjIyNTk5OGRlZmZiMzg2YzhjNzFjOGRiZjhiNzEwNjFjNjU2ZDdlMWYwM2VjQGc"}
-    ];
+    const actualCalendarEvents = [];
+    // Calendar events will populate as lessons are added to the new "Rice Swim Lesson Desk" calendar on as610@rice.edu
+    // Old calendar (c_f51d269063b85665a...) has been disconnected but not deleted
 
     /* ---- Data ---- */
     const saveLessons = (data) => localStorage.setItem(storageKey, JSON.stringify(data));
@@ -363,7 +354,7 @@
     }
     function renderCalendarFeed() {
       if (!actualCalendarEvents.length) { calendarFeed.innerHTML = `<div class="empty">No upcoming calendar events found.</div>`; calendarStatus.innerHTML = `<div class="empty">Calendar snapshot unavailable.</div>`; return; }
-      calendarStatus.innerHTML = `<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Private Lessons calendar on as610@rice.edu for April 1 to April 15.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div>`;
+      calendarStatus.innerHTML = `<div class="summary-row"><div><strong>${actualCalendarEvents.length} upcoming lessons</strong><span>Pulled from the Rice Swim Lesson Desk calendar on as610@rice.edu.</span></div><div class="lesson-count">${actualCalendarEvents.length}</div></div>`;
       calendarFeed.innerHTML = actualCalendarEvents.map(e => `<div class="calendar-row"><div><a href="${e.link}" target="_blank" rel="noreferrer">${e.title}</a><span class="calendar-meta">${formatEventRange(e.start, e.end)}</span></div><span class="calendar-pill">Calendar</span></div>`).join("");
     }
 
